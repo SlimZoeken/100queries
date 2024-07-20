@@ -8804,6 +8804,410 @@ ax.bar_label(ax.containers[0])
     
 
 
+
+```python
+columns = ["good_for_students", "bad_for_students", "ok_for_students"]
+results_sources.loc[~results_sources[columns].any(axis=1)]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bron: Thumbs up?</th>
+      <th>Titel resultaat</th>
+      <th>Link/resultaat</th>
+      <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
+      <th>Bronnen DB</th>
+      <th>Bron: Inst/Bedrijf</th>
+      <th>Toegankelijkheid doelgroep (indruk)</th>
+      <th>Soort Resultaat</th>
+      <th>...</th>
+      <th>SlimZ Resultaten DB</th>
+      <th>Resultaten: toegankelijkheid</th>
+      <th>Cookie info page</th>
+      <th>More examples</th>
+      <th>Related to Resultaten DB 01 (1) (Bronnen DB)</th>
+      <th>Res: Ranking</th>
+      <th>Res: soort result</th>
+      <th>ok_for_students</th>
+      <th>good_for_students</th>
+      <th>bad_for_students</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Nee</td>
+      <td>Gratis woordenboek | Van Dale NEDERLAND</td>
+      <td>https://www.vandale.nl/gratis-woordenboek/nede...</td>
+      <td>wat betekent schotse</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>vandale.nl</td>
+      <td>Van Dale Uitgevers, Utrecht/Antwerpen</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3,6,3,5,9,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Nee</td>
+      <td>D-reizen - Cruise Middellandse Zee – Veel keuz...</td>
+      <td>https://www.d-reizen.nl/cruise/middellandse-ze...</td>
+      <td>middellandse zee</td>
+      <td>niet_relevant</td>
+      <td>NaN</td>
+      <td>d-reizen.nl</td>
+      <td>D-reizen</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.d-reizen.nl/informatie/cookies - C...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10</td>
+      <td>navigational</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nee</td>
+      <td>Max Havelaar Koffie - Alles Over Deze Fairtrad...</td>
+      <td>https://www.koffiekwaliteit.nl/fairtrade-max-h...</td>
+      <td>keurmerk max</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>koffiekwaliteit.nl</td>
+      <td>koffiekwaliteit.nl</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Nee</td>
+      <td>Gratis woordenboek | Van Dale NEDERLAND</td>
+      <td>https://www.vandale.nl/gratis-woordenboek/nede...</td>
+      <td>leven</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>vandale.nl</td>
+      <td>Van Dale Uitgevers, Utrecht/Antwerpen</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3,6,3,5,9,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>Nee</td>
+      <td>Cristiano Ronaldo (@Cristiano) / X</td>
+      <td>https://twitter.com/Cristiano</td>
+      <td>ronaldo</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>twitter.com X</td>
+      <td>X voorheen Twitter</td>
+      <td>eenvoudig</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8,4,6,5,6</td>
+      <td>navigational,navigational,navigational,informa...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>936</th>
+      <td>Nee</td>
+      <td>Stoomschip - Wikikids</td>
+      <td>https://wikikids.nl/Stoomschip</td>
+      <td>stoomschip</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>wikikids.nl</td>
+      <td>Stichting Wikikids, ondersteund door Kennisnet...</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4,2,7,3,7,3,4,2,7,6,5,5,6,11,3,6,7,6,8,9,7,8,7,4</td>
+      <td>informatief,informatief,informatief,navigation...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>943</th>
+      <td>Nee</td>
+      <td>Lijst van gouverneurs en commissarissen van de...</td>
+      <td>https://wikikids.nl/Lijst_van_gouverneurs_en_c...</td>
+      <td>De gouverneur van limburg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>wikikids.nl</td>
+      <td>Stichting Wikikids, ondersteund door Kennisnet...</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4,2,7,3,7,3,4,2,7,6,5,5,6,11,3,6,7,6,8,9,7,8,7,4</td>
+      <td>informatief,informatief,informatief,navigation...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>969</th>
+      <td>Nee</td>
+      <td>Knups - Wist je datjes</td>
+      <td>https://www.knups.nl/wist-je-dat</td>
+      <td>wist je dat?</td>
+      <td>relevant</td>
+      <td>outdated</td>
+      <td>knups.nl</td>
+      <td>Knups.nl</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>970</th>
+      <td>Nee</td>
+      <td>33 Nutteloze feitjes om enorm indruk mee te ma...</td>
+      <td>https://www.saarmagazine.nl/33-nutteloze-feitj...</td>
+      <td>wist je dat?</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>saarmagazine.nl</td>
+      <td>Saar Magazine, Snippet Media</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4,2</td>
+      <td>informatief,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>972</th>
+      <td>Nee</td>
+      <td>23 Rare feitjes waar je niks aan hebt maar die...</td>
+      <td>https://www.saarmagazine.nl/23-rare-feitjes-wa...</td>
+      <td>wist je dat?</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>saarmagazine.nl</td>
+      <td>Saar Magazine, Snippet Media</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4,2</td>
+      <td>informatief,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>99 rows × 61 columns</p>
+</div>
+
+
+
+
+```python
+columns = ["good_for_students", "bad_for_students"]
+results_sources.loc[results_sources[columns].all(axis=1)]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bron: Thumbs up?</th>
+      <th>Titel resultaat</th>
+      <th>Link/resultaat</th>
+      <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
+      <th>Bronnen DB</th>
+      <th>Bron: Inst/Bedrijf</th>
+      <th>Toegankelijkheid doelgroep (indruk)</th>
+      <th>Soort Resultaat</th>
+      <th>...</th>
+      <th>SlimZ Resultaten DB</th>
+      <th>Resultaten: toegankelijkheid</th>
+      <th>Cookie info page</th>
+      <th>More examples</th>
+      <th>Related to Resultaten DB 01 (1) (Bronnen DB)</th>
+      <th>Res: Ranking</th>
+      <th>Res: soort result</th>
+      <th>ok_for_students</th>
+      <th>good_for_students</th>
+      <th>bad_for_students</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Ja</td>
+      <td>Correct gebruik van aanhalingstekens – Correct...</td>
+      <td>https://www.correctnederlands.nl/correct-gebru...</td>
+      <td>wat is een begin aanhaling</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>correctnederlands.nl</td>
+      <td>Correct Nederlands, Frank den Hond</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10</td>
+      <td>informatief</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 61 columns</p>
+</div>
+
+
+
 ### Soort Resultaten Distribution per Query
 
 
@@ -8856,7 +9260,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_138_2.png)
+![png](analysis_files/analysis_140_2.png)
     
 
 
@@ -8910,7 +9314,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_139_2.png)
+![png](analysis_files/analysis_141_2.png)
     
 
 
@@ -8964,7 +9368,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_140_2.png)
+![png](analysis_files/analysis_142_2.png)
     
 
 
@@ -9020,7 +9424,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_142_2.png)
+![png](analysis_files/analysis_144_2.png)
     
 
 
@@ -9074,7 +9478,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_143_2.png)
+![png](analysis_files/analysis_145_2.png)
     
 
 
@@ -9103,7 +9507,7 @@ ax.set_ylabel("Number of Queries")
 
 
     
-![png](analysis_files/analysis_145_1.png)
+![png](analysis_files/analysis_147_1.png)
     
 
 
@@ -9143,7 +9547,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_147_1.png)
+![png](analysis_files/analysis_149_1.png)
     
 
 
@@ -9177,7 +9581,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_149_1.png)
+![png](analysis_files/analysis_151_1.png)
     
 
 
@@ -9212,7 +9616,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_150_1.png)
+![png](analysis_files/analysis_152_1.png)
     
 
 
@@ -9277,7 +9681,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_152_1.png)
+![png](analysis_files/analysis_154_1.png)
     
 
 
@@ -9331,5 +9735,5 @@ ax.bar_label(ax.containers[0])
     zsh:1: /Users/carstenschnober/.local/bin/jupyter: bad interpreter: /Users/carstenschnober/opt/anaconda3/envs/SoS/bin/python: no such file or directory
     [NbConvertApp] Converting notebook analysis.ipynb to markdown
     [NbConvertApp] Support files will be in analysis_files/
-    [NbConvertApp] Writing 218911 bytes to analysis.md
+    [NbConvertApp] Writing 232647 bytes to analysis.md
 
