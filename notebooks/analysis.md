@@ -22,7 +22,7 @@
     Requirement already satisfied: scipy in /Users/carstenschnober/SlimZoeken/100queries/.venv/lib/python3.11/site-packages (from matplotlib-venn) (1.13.0)
     Requirement already satisfied: six>=1.5 in /Users/carstenschnober/SlimZoeken/100queries/.venv/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)
     
-    [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m23.3.2[0m[39;49m -> [0m[32;49m24.0[0m
+    [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m23.3.2[0m[39;49m -> [0m[32;49m24.1.2[0m
     [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip install --upgrade pip[0m
     Note: you may need to restart the kernel to use updated packages.
 
@@ -31,6 +31,16 @@
 ```python
 import pandas as pd
 ```
+
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/4080736814.py:1: DeprecationWarning: 
+    Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
+    (to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
+    but was not found to be installed on your system.
+    If this would cause problems for you,
+    please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
+            
+      import pandas as pd
+
 
 # Load Data
 
@@ -77,9 +87,7 @@ for url, expected in zip(urls, expecteds):
 
 
 ```python
-BRONNEN_DB_DIR = DATA_DIR / Path(
-    "08ed52f6-66b4-4f44-905f-7adf983c0b00_Export-5b44b9e6-71d6-4ac9-906a-d5a96154bef9"
-)
+BRONNEN_DB_DIR = DATA_DIR / Path("Bronnen DB")
 assert BRONNEN_DB_DIR.is_dir()
 
 BRONNEN_FILE = BRONNEN_DB_DIR / Path(
@@ -125,15 +133,15 @@ sources.head()
     <tr style="text-align: right;">
       <th></th>
       <th>URL Domein</th>
-      <th>Onderwerpen</th>
+      <th>Conclusie over doel vd bron</th>
+      <th>Thumbs up 8-14?</th>
       <th>Sector</th>
       <th>Reclame</th>
+      <th>Vrije labels bron/onderwerp</th>
       <th>uBlocked trackers</th>
       <th>Commercialiteit</th>
+      <th>Onderwerpen</th>
       <th>Div Labels NGO</th>
-      <th>Conclusie over doel vd bron</th>
-      <th>Vrije labels bron/onderwerp</th>
-      <th>Thumbs up 8-14?</th>
       <th>...</th>
       <th>Created time</th>
       <th>Created by</th>
@@ -175,15 +183,15 @@ sources.head()
     <tr>
       <th>24baby.nl</th>
       <td>https://www.24baby.nl/</td>
-      <td>NaN</td>
+      <td>informatieproduct div. commercieel</td>
+      <td>Just-in-case</td>
       <td>Winkels en bedrijven div</td>
       <td>over_the_top_ads</td>
+      <td>link/reclamevehikel, nieuws, promotioneel, web...</td>
       <td>5</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>div. commercieel informatieproducten, reclamev...</td>
-      <td>nieuws, promotioneel, reclamevehikel, webshop,...</td>
-      <td>Just-in-case</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 6, 2023 11:09 AM</td>
       <td>Maarten Sprenger</td>
@@ -199,15 +207,15 @@ sources.head()
     <tr>
       <th>24kitchen.nl</th>
       <td>https://www.24kitchen.nl</td>
-      <td>NaN</td>
+      <td>entertainment, informatieproduct div. commercieel</td>
+      <td>Just-in-case</td>
       <td>Entertainment-industrie</td>
       <td>company_promotion, limited_ads, sluikreclame -...</td>
+      <td>entertainment, infotainment, promotioneel</td>
       <td>17</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>div. commercieel informatieproducten, entertai...</td>
-      <td>entertainment, infotainment, promotioneel</td>
-      <td>Just-in-case</td>
+      <td>NaN</td>
       <td>...</td>
       <td>December 14, 2023 6:43 PM</td>
       <td>Maarten Sprenger</td>
@@ -223,15 +231,15 @@ sources.head()
     <tr>
       <th>333travel.nl</th>
       <td>https://www.333travel.nl/</td>
-      <td>NaN</td>
+      <td>webshop/winkel+promotioneel deel</td>
+      <td>Just-in-case</td>
       <td>Reisorganisaties</td>
       <td>company_promotion</td>
+      <td>(product)informatie ihkv verkoop/bezoek, bedri...</td>
       <td>7</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>webshop/winkel+promotioneel deel</td>
-      <td>(product)informatie ihkv verkoop/bezoek, bedri...</td>
-      <td>Just-in-case</td>
+      <td>NaN</td>
       <td>...</td>
       <td>February 23, 2024 5:35 PM</td>
       <td>Maarten Sprenger</td>
@@ -247,15 +255,15 @@ sources.head()
     <tr>
       <th>absolutefacts.nl</th>
       <td>https://www.absolutefacts.nl/</td>
-      <td>geschiedenis</td>
-      <td>Internetbedrijven</td>
+      <td>informatieproduct div. commercieel</td>
+      <td>Twijfel</td>
+      <td>Online-bedrijven</td>
       <td>company_promotion</td>
+      <td>abo-print, informatie_primair_doel, webshop</td>
       <td>2</td>
       <td>commercieel</td>
+      <td>geschiedenis</td>
       <td>NaN</td>
-      <td>div. commercieel informatieproducten</td>
-      <td>informatie_primair_doel, webshop</td>
-      <td>Twijfel</td>
       <td>...</td>
       <td>December 14, 2023 7:29 PM</td>
       <td>Maarten Sprenger</td>
@@ -271,15 +279,15 @@ sources.head()
     <tr>
       <th>accuautoshop.nl</th>
       <td>https://www.accuautoshop.nl/</td>
-      <td>NaN</td>
+      <td>webshop/winkel+promotioneel deel</td>
+      <td>Nee</td>
       <td>Winkels en bedrijven div</td>
       <td>company_promotion</td>
+      <td>webshop</td>
       <td>6</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>webshop/winkel+promotioneel deel</td>
-      <td>webshop</td>
-      <td>Nee</td>
+      <td>NaN</td>
       <td>...</td>
       <td>February 22, 2024 3:23 PM</td>
       <td>Maarten Sprenger</td>
@@ -307,9 +315,9 @@ sources.columns
 
 
 
-    Index(['URL Domein', 'Onderwerpen', 'Sector', 'Reclame', 'uBlocked trackers',
-           'Commercialiteit', 'Div Labels NGO', 'Conclusie over doel vd bron',
-           'Vrije labels bron/onderwerp', 'Thumbs up 8-14?', 'Status',
+    Index(['URL Domein', 'Conclusie over doel vd bron', 'Thumbs up 8-14?',
+           'Sector', 'Reclame', 'Vrije labels bron/onderwerp', 'uBlocked trackers',
+           'Commercialiteit', 'Onderwerpen', 'Div Labels NGO', 'Status',
            'About page', ' Notes', 'Kwaliteit_about', 'Instelling/Bedrijf/Persoon',
            'Resultaten: vrije labels', 'Moederbedrijf DB', 'NR',
            'Toegankelijkheidspagina', 'Resultaten DB', 'Extra URL', 'Created time',
@@ -337,18 +345,213 @@ len(sources)
 
 
 ```python
-QUERY_DIR = DATA_DIR / Path(
-    "4fdaffd9-2ef6-43e9-9cbd-29c8b7b75f85_Export-a35ef075-cf88-430a-83eb-9885bea0ecb1/Query DB 01 5a4aec0449af4acc87a45c19be574353"
-)
+QUERY_DIR = DATA_DIR / Path("Query DB")
 assert QUERY_DIR.is_dir()
 
-QUERY_FILE = QUERY_DIR / Path("Untitled cacf3a0313a84561bac9b6ea48ecc189_all.csv")
+QUERY_FILE = QUERY_DIR / Path(
+    "Query DB 01 5a4aec0449af4acc87a45c19be574353/Untitled cacf3a0313a84561bac9b6ea48ecc189_all.csv"
+)
 assert QUERY_FILE.is_file()
 ```
 
 
 ```python
 all_queries = pd.read_csv(QUERY_FILE)
+all_queries.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Query</th>
+      <th>Add Results</th>
+      <th>Google</th>
+      <th>Video Facet</th>
+      <th>Videos-Schooltv?</th>
+      <th>Kennisvenster?</th>
+      <th>'Samenvatting'?</th>
+      <th>Extra (top-down)</th>
+      <th>Opmerkingen</th>
+      <th>Soort Query (select)</th>
+      <th>...</th>
+      <th>Leeftijd</th>
+      <th>Resultaten DB</th>
+      <th>OK-100</th>
+      <th>Ranking Conclusie</th>
+      <th>Date</th>
+      <th>Bronnen DB</th>
+      <th>Created time</th>
+      <th>Bronnen DB 1</th>
+      <th>Bronnen: Thumbs up?</th>
+      <th>Bronnen: Toeg.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>leven</td>
+      <td>Done</td>
+      <td>https://www.google.com/search?q=leven&amp;rlz=1C5C...</td>
+      <td>https://www.google.com/search?sca_esv=60037616...</td>
+      <td>-</td>
+      <td>Nee</td>
+      <td>Nee</td>
+      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
+      <td>Bij Video’s (na 2) staat de Maan-song Leven ge...</td>
+      <td>Named entity</td>
+      <td>...</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>July 18, 2023 7:47 PM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>wat betekent schotse</td>
+      <td>Done</td>
+      <td>https://www.google.com/search?q=wat+betekent+s...</td>
+      <td>https://www.google.com/search?sca_esv=60037616...</td>
+      <td>-</td>
+      <td>Nee</td>
+      <td>Ja</td>
+      <td>Vragen van anderen (top)</td>
+      <td>NaN</td>
+      <td>Vragen</td>
+      <td>...</td>
+      <td>10</td>
+      <td>Schotse - 2 definities - Encyclo (https://www....</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>July 18, 2023 7:47 PM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>middellandse zee</td>
+      <td>Done</td>
+      <td>https://www.google.com/search?q=middellandse+z...</td>
+      <td>https://www.google.com/search?sca_esv=60037616...</td>
+      <td>-</td>
+      <td>Ja uitgebreid</td>
+      <td>Nee</td>
+      <td>Afbeeldingen carroussel (top), Gerelateerde zo...</td>
+      <td>NaN</td>
+      <td>Named entity</td>
+      <td>...</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>July 18, 2023 7:47 PM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>De smurfen</td>
+      <td>Done</td>
+      <td>https://www.google.nl/search?q=De+smurfen&amp;sca_...</td>
+      <td>https://www.google.nl/search?sca_esv=578451392...</td>
+      <td>-</td>
+      <td>Ja</td>
+      <td>Nee</td>
+      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
+      <td>NaN</td>
+      <td>Named entity</td>
+      <td>...</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>google.nl/com (https://www.notion.so/google-nl...</td>
+      <td>July 18, 2023 7:47 PM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>keurmerk max</td>
+      <td>Done</td>
+      <td>https://www.google.com/search?q=keurmerk+max&amp;r...</td>
+      <td>https://www.google.com/search?sca_esv=60037616...</td>
+      <td>-</td>
+      <td>Nee</td>
+      <td>Nee</td>
+      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
+      <td>NaN</td>
+      <td>2 of meer woorden</td>
+      <td>...</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>July 18, 2023 7:47 PM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div>
+
+
+
+
+```python
+all_queries.columns
+```
+
+
+
+
+    Index(['Query', 'Add Results', 'Google', 'Video Facet', 'Videos-Schooltv?',
+           'Kennisvenster?', ''Samenvatting'?', 'Extra (top-down)', 'Opmerkingen',
+           'Soort Query (select)', 'Extra (multi)', 'Onderwerp', 'Leeftijd',
+           'Resultaten DB', 'OK-100', 'Ranking Conclusie', 'Date', 'Bronnen DB',
+           'Created time', 'Bronnen DB 1', 'Bronnen: Thumbs up?',
+           'Bronnen: Toeg.'],
+          dtype='object')
+
+
+
+
+```python
 
 queries = (
     all_queries[all_queries["OK-100"] == "Yes"]
@@ -379,149 +582,149 @@ queries.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>OK-100</th>
       <th>Query</th>
-      <th>Leeftijd</th>
-      <th>Onderwerp</th>
-      <th>Soort Query (select)</th>
-      <th>Google</th>
-      <th>'Samenvatting'?</th>
       <th>Add Results</th>
-      <th>Bronnen DB</th>
-      <th>Bronnen DB 1</th>
-      <th>...</th>
-      <th>Bronnen: Toeg.</th>
-      <th>Date</th>
-      <th>Extra (multi)</th>
-      <th>Extra (top-down)</th>
-      <th>Kennisvenster?</th>
-      <th>Opmerkingen</th>
-      <th>Ranking Conclusie</th>
-      <th>Resultaten DB</th>
+      <th>Google</th>
       <th>Video Facet</th>
       <th>Videos-Schooltv?</th>
+      <th>Kennisvenster?</th>
+      <th>'Samenvatting'?</th>
+      <th>Extra (top-down)</th>
+      <th>Opmerkingen</th>
+      <th>Soort Query (select)</th>
+      <th>...</th>
+      <th>Onderwerp</th>
+      <th>Leeftijd</th>
+      <th>Resultaten DB</th>
+      <th>OK-100</th>
+      <th>Ranking Conclusie</th>
+      <th>Date</th>
+      <th>Bronnen DB</th>
+      <th>Bronnen DB 1</th>
+      <th>Bronnen: Thumbs up?</th>
+      <th>Bronnen: Toeg.</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>Yes</td>
+      <th>0</th>
       <td>leven</td>
-      <td>8</td>
-      <td>Natuur/Biologie</td>
-      <td>Named entity</td>
-      <td>https://www.google.com/search?q=leven&amp;rlz=1C5C...</td>
-      <td>Nee</td>
       <td>Done</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Media(ster)</td>
-      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
-      <td>Nee</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>https://www.google.com/search?q=leven&amp;rlz=1C5C...</td>
       <td>https://www.google.com/search?sca_esv=60037616...</td>
       <td>-</td>
+      <td>Nee</td>
+      <td>Nee</td>
+      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
+      <td>Bij Video’s (na 2) staat de Maan-song Leven ge...</td>
+      <td>Named entity</td>
+      <td>...</td>
+      <td>Natuur/Biologie</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>wat betekent schotse</td>
+      <td>Done</td>
+      <td>https://www.google.com/search?q=wat+betekent+s...</td>
+      <td>https://www.google.com/search?sca_esv=60037616...</td>
+      <td>-</td>
+      <td>Nee</td>
+      <td>Ja</td>
+      <td>Vragen van anderen (top)</td>
+      <td>NaN</td>
+      <td>Vragen</td>
+      <td>...</td>
+      <td>Taal/Cultuur</td>
+      <td>10</td>
+      <td>Schotse - 2 definities - Encyclo (https://www....</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>middellandse zee</td>
+      <td>Done</td>
+      <td>https://www.google.com/search?q=middellandse+z...</td>
+      <td>https://www.google.com/search?sca_esv=60037616...</td>
+      <td>-</td>
+      <td>Ja uitgebreid</td>
+      <td>Nee</td>
+      <td>Afbeeldingen carroussel (top), Gerelateerde zo...</td>
+      <td>NaN</td>
+      <td>Named entity</td>
+      <td>...</td>
+      <td>Aardrijkskunde</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>De smurfen</td>
+      <td>Done</td>
+      <td>https://www.google.nl/search?q=De+smurfen&amp;sca_...</td>
+      <td>https://www.google.nl/search?sca_esv=578451392...</td>
+      <td>-</td>
+      <td>Ja</td>
+      <td>Nee</td>
+      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
+      <td>NaN</td>
+      <td>Named entity</td>
+      <td>...</td>
+      <td>Taal/Cultuur</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>google.nl/com (https://www.notion.so/google-nl...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Yes</td>
-      <td>wat betekent schotse</td>
-      <td>10</td>
-      <td>Taal/Cultuur</td>
-      <td>Vragen</td>
-      <td>https://www.google.com/search?q=wat+betekent+s...</td>
-      <td>Ja</td>
+      <td>keurmerk max</td>
       <td>Done</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Vragen van anderen (top)</td>
-      <td>Nee</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Schotse - 2 definities - Encyclo (https://www....</td>
+      <td>https://www.google.com/search?q=keurmerk+max&amp;r...</td>
       <td>https://www.google.com/search?sca_esv=60037616...</td>
       <td>-</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Yes</td>
-      <td>middellandse zee</td>
-      <td>11</td>
-      <td>Aardrijkskunde</td>
-      <td>Named entity</td>
-      <td>https://www.google.com/search?q=middellandse+z...</td>
       <td>Nee</td>
-      <td>Done</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Afbeeldingen carroussel (top), Gerelateerde zo...</td>
-      <td>Ja uitgebreid</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>https://www.google.com/search?sca_esv=60037616...</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Yes</td>
-      <td>geld</td>
-      <td>9</td>
-      <td>Maatschappij</td>
-      <td>Eén woord</td>
-      <td>https://www.google.nl/search?q=geld&amp;sca_esv=59...</td>
       <td>Nee</td>
-      <td>Done</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Gerelateerde zoekopdrachten (na 10), Lokaal ni...</td>
-      <td>Nee</td>
-      <td>Merkwaardig, eerste paar video resultaten zijn...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>https://www.google.nl/search?sca_esv=598588983...</td>
-      <td>- (klokhuis 9)</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Yes</td>
-      <td>De smurfen</td>
-      <td>10</td>
-      <td>Taal/Cultuur</td>
-      <td>Named entity</td>
-      <td>https://www.google.nl/search?q=De+smurfen&amp;sca_...</td>
-      <td>Nee</td>
-      <td>Done</td>
-      <td>google.nl/com (https://www.notion.so/google-nl...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Merk/Bedrijf</td>
       <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
-      <td>Ja</td>
+      <td>NaN</td>
+      <td>2 of meer woorden</td>
+      <td>...</td>
+      <td>Maatschappij</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>Yes</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>https://www.google.nl/search?sca_esv=578451392...</td>
-      <td>-</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -546,9 +749,7 @@ len(queries)
 
 
 ```python
-RESULTS_DIR = DATA_DIR / Path(
-    "eceaf982-edff-418b-9158-ccd8ca0f3135_Export-920b4668-cc69-4f8b-9e24-04a528ba1d9c 2"
-)
+RESULTS_DIR = DATA_DIR / Path("Resultaten DB")
 assert RESULTS_DIR.is_dir()
 
 RESULTS_FILE = RESULTS_DIR / Path(
@@ -596,23 +797,23 @@ results.head()
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
-      <th>Bron: Vrije labels</th>
       <th>Bron: doel</th>
-      <th>Trackers</th>
+      <th>Bron: Trackers</th>
+      <th>OnderzoekNr</th>
+      <th>Ranking</th>
       <th>Related to Bronnen DB test (Resultaten DB)</th>
       <th>Bronnen: URL domein</th>
-      <th>OnderzoekNr</th>
       <th>Query: Video Schooltv</th>
       <th>Created by</th>
       <th>Bron-Status</th>
-      <th>Ranking</th>
+      <th>Bron: Onderwerp</th>
     </tr>
   </thead>
   <tbody>
@@ -622,23 +823,23 @@ results.head()
       <td>Schotse - 2 definities - Encyclo</td>
       <td>https://www.encyclo.nl/begrip/schotse#:~:text=...</td>
       <td>wat betekent schotse (https://www.notion.so/wa...</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>encyclo.nl (https://www.notion.so/encyclo-nl-9...</td>
       <td>Slot Webcommerce bv.</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
-      <td>aggregator/contentfarm,encyclopedie,portal,woo...</td>
-      <td>div. commercieel informatieproducten</td>
+      <td>aggregator/contenfarm,informatieproduct div. c...</td>
       <td>7</td>
+      <td>1</td>
+      <td>1</td>
       <td>NaN</td>
       <td>www.encyclo.nl</td>
-      <td>1</td>
       <td>-</td>
       <td>Maarten Sprenger</td>
       <td>Needs peer-review</td>
-      <td>1</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
@@ -646,23 +847,23 @@ results.head()
       <td>Gratis woordenboek | Van Dale NEDERLAND</td>
       <td>https://www.vandale.nl/gratis-woordenboek/nede...</td>
       <td>wat betekent schotse (https://www.notion.so/wa...</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>vandale.nl (https://www.notion.so/vandale-nl-8...</td>
       <td>Van Dale Uitgevers, Utrecht/Antwerpen</td>
       <td>complex</td>
-      <td>niet_relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
-      <td>paywall (geheel/gedeeltelijk),webshop,woordenboek</td>
-      <td>div. commercieel informatieproducten</td>
+      <td>informatieproduct div. commercieel</td>
       <td>4</td>
+      <td>1</td>
+      <td>3</td>
       <td>NaN</td>
       <td>https://www.vandale.nl/</td>
-      <td>1</td>
       <td>-</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
-      <td>3</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
@@ -670,23 +871,23 @@ results.head()
       <td>Schots - WikiWoordenboek</td>
       <td>https://nl.wiktionary.org/wiki/Schots</td>
       <td>wat betekent schotse (https://www.notion.so/wa...</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wiktionary.org (https://www.notion.so/wiktiona...</td>
       <td>Wiktionary, Wikimedia foundation</td>
       <td>complex</td>
-      <td>niet_relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
-      <td>user_generated_content,wiki,woordenboek</td>
       <td>gebruikersplatform met kwaliteitsinformatie</td>
       <td>0</td>
+      <td>1</td>
+      <td>6</td>
       <td>NaN</td>
       <td>https://nl.wiktionary.org/</td>
-      <td>1</td>
       <td>-</td>
       <td>Maarten Sprenger</td>
       <td>Almost completed</td>
-      <td>6</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -694,23 +895,23 @@ results.head()
       <td>Wat is de betekenis van Schotse</td>
       <td>https://www.ensie.nl/betekenis/schotse</td>
       <td>wat betekent schotse (https://www.notion.so/wa...</td>
-      <td>Ensie.nl (https://www.notion.so/Ensie-nl-2aa00...</td>
-      <td>Stichting Ensie Encyclopedie</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>Ensie.nl (https://www.notion.so/Ensie-nl-2aa00...</td>
+      <td>Stichting Ensie Encyclopedie</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
-      <td>encyclopedie,informatie_primair_doel,kennisban...</td>
-      <td>div. non-commercieel informatieproducten</td>
+      <td>kwaliteitsinformatie-div</td>
       <td>1</td>
+      <td>1</td>
+      <td>7</td>
       <td>NaN</td>
       <td>https://www.ensie.nl/</td>
-      <td>1</td>
       <td>-</td>
       <td>Maarten Sprenger</td>
       <td>Almost completed</td>
-      <td>7</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
@@ -718,27 +919,27 @@ results.head()
       <td>Schotland - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Schotland</td>
       <td>wat betekent schotse (https://www.notion.so/wa...</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org  (https://www.notion.so/wikipedi...</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
-      <td>community,informatie_primair_doel,user_generat...</td>
       <td>gebruikersplatform met kwaliteitsinformatie</td>
       <td>1</td>
+      <td>1</td>
+      <td>8</td>
       <td>NaN</td>
       <td>https://nl.wikipedia.org/</td>
-      <td>1</td>
       <td>-</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
-      <td>8</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 26 columns</p>
+<p>5 rows × 27 columns</p>
 </div>
 
 
@@ -973,14 +1174,14 @@ results.columns
 
 
     Index(['Bron: Thumbs up?', 'Titel resultaat', 'Link/resultaat', 'Query',
-           'Bronnen DB', 'Bron: Inst/Bedrijf',
-           'Toegankelijkheid doelgroep (indruk)', 'Relevant?', 'vrije tags page',
-           'Soort Resultaat', 'Bron: Commerciality', 'Bron: Sector', 'Q: soort',
-           'Bron: reclame', 'Opmerking', 'Ranking vrije labels',
-           'Bron: Vrije labels', 'Bron: doel', 'Trackers',
+           'Relevant?', 'vrije tags page', 'Bronnen DB', 'Bron: Inst/Bedrijf',
+           'Toegankelijkheid doelgroep (indruk)', 'Soort Resultaat',
+           'Bron: Vrije labels', 'Bron: Commerciality', 'Bron: Sector', 'Q: soort',
+           'Bron: reclame', 'Opmerking', 'Q: Ranking vrije labels', 'Bron: doel',
+           'Bron: Trackers', 'OnderzoekNr', 'Ranking',
            'Related to Bronnen DB test (Resultaten DB)', 'Bronnen: URL domein',
-           'OnderzoekNr', 'Query: Video Schooltv', 'Created by', 'Bron-Status',
-           'Ranking'],
+           'Query: Video Schooltv', 'Created by', 'Bron-Status',
+           'Bron: Onderwerp'],
           dtype='object')
 
 
@@ -1021,11 +1222,11 @@ results_sources
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
       <th>Created time</th>
@@ -1047,11 +1248,11 @@ results_sources
       <td>Schotse - 2 definities - Encyclo</td>
       <td>https://www.encyclo.nl/begrip/schotse#:~:text=...</td>
       <td>wat betekent schotse</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>encyclo.nl</td>
       <td>Slot Webcommerce bv.</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>October 26, 2023 10:25 AM</td>
@@ -1071,11 +1272,11 @@ results_sources
       <td>Gratis woordenboek | Van Dale NEDERLAND</td>
       <td>https://www.vandale.nl/gratis-woordenboek/nede...</td>
       <td>wat betekent schotse</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>vandale.nl</td>
       <td>Van Dale Uitgevers, Utrecht/Antwerpen</td>
       <td>complex</td>
-      <td>niet_relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>October 26, 2023 12:23 PM</td>
@@ -1095,11 +1296,11 @@ results_sources
       <td>Schots - WikiWoordenboek</td>
       <td>https://nl.wiktionary.org/wiki/Schots</td>
       <td>wat betekent schotse</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wiktionary.org</td>
       <td>Wiktionary, Wikimedia foundation</td>
       <td>complex</td>
-      <td>niet_relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>October 26, 2023 12:22 PM</td>
@@ -1119,11 +1320,11 @@ results_sources
       <td>Wat is de betekenis van Schotse</td>
       <td>https://www.ensie.nl/betekenis/schotse</td>
       <td>wat betekent schotse</td>
-      <td>Ensie.nl</td>
-      <td>Stichting Ensie Encyclopedie</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>Ensie.nl</td>
+      <td>Stichting Ensie Encyclopedie</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>October 26, 2023 12:22 PM</td>
@@ -1143,11 +1344,11 @@ results_sources
       <td>Schotland - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Schotland</td>
       <td>wat betekent schotse</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>July 22, 2023 5:49 PM</td>
@@ -1191,11 +1392,11 @@ results_sources
       <td>Geld | Het laatste nieuws uit Nederland lees j...</td>
       <td>https://www.telegraaf.nl/financieel/geld</td>
       <td>geld</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>telegraaf.nl</td>
       <td>De Telegraaf, Mediahuis Nederland B.V.</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>December 15, 2023 12:38 PM</td>
@@ -1215,11 +1416,11 @@ results_sources
       <td>Geld | AD.nl</td>
       <td>https://www.ad.nl/geld/?referrer=https%3A%2F%2...</td>
       <td>geld</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>ad.nl</td>
       <td>AD, DPG Media Group</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>October 26, 2023 2:46 PM</td>
@@ -1239,11 +1440,11 @@ results_sources
       <td>Geld | RTL Nieuws</td>
       <td>https://www.rtlnieuws.nl/tags/onderwerpen/econ...</td>
       <td>geld</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>rtlnieuws.nl</td>
       <td>RTL Nederland B.V.</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>December 14, 2023 3:15 PM</td>
@@ -1263,11 +1464,11 @@ results_sources
       <td>Het Nibud (Nationaal Instituut voor Budgetvoor...</td>
       <td>https://www.nibud.nl/</td>
       <td>geld</td>
+      <td>misschien</td>
+      <td>homepage</td>
       <td>nibud.nl</td>
       <td>Nibud (Nationaal Instituut voor Budgetvoorlich...</td>
-      <td>redelijk begrijpelijk</td>
-      <td>misschien</td>
-      <td>NaN</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>January 15, 2024 3:46 PM</td>
@@ -1287,11 +1488,11 @@ results_sources
       <td>Hoeveel contant geld mag ik thuis bewaren? | R...</td>
       <td>https://www.rijksoverheid.nl/onderwerpen/geldz...</td>
       <td>geld</td>
-      <td>rijksoverheid.nl</td>
-      <td>Rijksoverheid</td>
-      <td>redelijk begrijpelijk</td>
       <td>misschien</td>
       <td>NaN</td>
+      <td>rijksoverheid.nl</td>
+      <td>Rijksoverheid</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>December 15, 2023 11:31 AM</td>
@@ -1307,7 +1508,7 @@ results_sources
     </tr>
   </tbody>
 </table>
-<p>998 rows × 57 columns</p>
+<p>998 rows × 58 columns</p>
 </div>
 
 
@@ -1321,17 +1522,17 @@ results_sources.columns
 
 
     Index(['Bron: Thumbs up?', 'Titel resultaat', 'Link/resultaat', 'Query',
-           'Bronnen DB', 'Bron: Inst/Bedrijf',
-           'Toegankelijkheid doelgroep (indruk)', 'Relevant?', 'vrije tags page',
-           'Soort Resultaat', 'Bron: Commerciality', 'Bron: Sector', 'Q: soort',
-           'Bron: reclame', 'Opmerking', 'Ranking vrije labels',
-           'Bron: Vrije labels', 'Bron: doel', 'Trackers',
+           'Relevant?', 'vrije tags page', 'Bronnen DB', 'Bron: Inst/Bedrijf',
+           'Toegankelijkheid doelgroep (indruk)', 'Soort Resultaat',
+           'Bron: Vrije labels', 'Bron: Commerciality', 'Bron: Sector', 'Q: soort',
+           'Bron: reclame', 'Opmerking', 'Q: Ranking vrije labels', 'Bron: doel',
+           'Bron: Trackers', 'OnderzoekNr', 'Ranking',
            'Related to Bronnen DB test (Resultaten DB)', 'Bronnen: URL domein',
-           'OnderzoekNr', 'Query: Video Schooltv', 'Created by_source',
-           'Bron-Status', 'Ranking', 'URL Domein', 'Onderwerpen', 'Sector',
-           'Reclame', 'uBlocked trackers', 'Commercialiteit', 'Div Labels NGO',
-           'Conclusie over doel vd bron', 'Vrije labels bron/onderwerp',
-           'Thumbs up 8-14?', 'Status', 'About page', ' Notes', 'Kwaliteit_about',
+           'Query: Video Schooltv', 'Created by_source', 'Bron-Status',
+           'Bron: Onderwerp', 'URL Domein', 'Conclusie over doel vd bron',
+           'Thumbs up 8-14?', 'Sector', 'Reclame', 'Vrije labels bron/onderwerp',
+           'uBlocked trackers', 'Commercialiteit', 'Onderwerpen', 'Div Labels NGO',
+           'Status', 'About page', ' Notes', 'Kwaliteit_about',
            'Instelling/Bedrijf/Persoon', 'Resultaten: vrije labels',
            'Moederbedrijf DB', 'NR', 'Toegankelijkheidspagina', 'Resultaten DB',
            'Extra URL', 'Created time', 'Created by_result', 'URL Moederbedrijf',
@@ -1372,15 +1573,15 @@ sources.loc[sources.index.str.contains("fonq")]
     <tr style="text-align: right;">
       <th></th>
       <th>URL Domein</th>
-      <th>Onderwerpen</th>
+      <th>Conclusie over doel vd bron</th>
+      <th>Thumbs up 8-14?</th>
       <th>Sector</th>
       <th>Reclame</th>
+      <th>Vrije labels bron/onderwerp</th>
       <th>uBlocked trackers</th>
       <th>Commercialiteit</th>
+      <th>Onderwerpen</th>
       <th>Div Labels NGO</th>
-      <th>Conclusie over doel vd bron</th>
-      <th>Vrije labels bron/onderwerp</th>
-      <th>Thumbs up 8-14?</th>
       <th>...</th>
       <th>Created time</th>
       <th>Created by</th>
@@ -1422,15 +1623,15 @@ sources.loc[sources.index.str.contains("fonq")]
     <tr>
       <th>fonq.nl</th>
       <td>https://www.fonq.nl/</td>
-      <td>NaN</td>
+      <td>alleen webshop</td>
+      <td>Nee</td>
       <td>Winkels en bedrijven div</td>
       <td>company_promotion</td>
+      <td>webshop</td>
       <td>8</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>alleen webshop+productomschrijving</td>
-      <td>webshop</td>
-      <td>Nee</td>
+      <td>NaN</td>
       <td>...</td>
       <td>February 22, 2024 1:54 PM</td>
       <td>Maarten Sprenger</td>
@@ -1480,23 +1681,23 @@ results.loc[results["Bronnen DB"].str.contains("fonq")]
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
-      <th>Bron: Vrije labels</th>
       <th>Bron: doel</th>
-      <th>Trackers</th>
+      <th>Bron: Trackers</th>
+      <th>OnderzoekNr</th>
+      <th>Ranking</th>
       <th>Related to Bronnen DB test (Resultaten DB)</th>
       <th>Bronnen: URL domein</th>
-      <th>OnderzoekNr</th>
       <th>Query: Video Schooltv</th>
       <th>Created by</th>
       <th>Bron-Status</th>
-      <th>Ranking</th>
+      <th>Bron: Onderwerp</th>
     </tr>
   </thead>
   <tbody>
@@ -1506,23 +1707,23 @@ results.loc[results["Bronnen DB"].str.contains("fonq")]
       <td>Vogelhuis kopen? Kies uit 50+ Vogelhuisjes bij...</td>
       <td>https://www.fonq.nl/producten/categorie-vogelh...</td>
       <td>vogels huisjes</td>
+      <td>misschien</td>
+      <td>webshop_result_page</td>
       <td>fonq.nl</td>
       <td>fonQ</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>webshop-result page</td>
       <td>transactional</td>
       <td>...</td>
-      <td>webshop</td>
-      <td>alleen webshop+productomschrijving</td>
+      <td>alleen webshop</td>
       <td>8</td>
+      <td>1</td>
+      <td>9</td>
       <td>NaN</td>
       <td>https://www.fonq.nl/</td>
-      <td>1</td>
       <td>8, 10</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
-      <td>9</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>964</th>
@@ -1530,27 +1731,27 @@ results.loc[results["Bronnen DB"].str.contains("fonq")]
       <td>Stijlvolle klokken: vind jouw unieke klok bij ...</td>
       <td>https://www.fonq.nl/producten/categorie-klokken/</td>
       <td>klokken</td>
+      <td>relevant</td>
+      <td>webshop_result_page</td>
       <td>fonq.nl</td>
       <td>fonQ</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>webshop-result page</td>
       <td>transactional</td>
       <td>...</td>
-      <td>webshop</td>
-      <td>alleen webshop+productomschrijving</td>
+      <td>alleen webshop</td>
       <td>8</td>
+      <td>1</td>
+      <td>5</td>
       <td>NaN</td>
       <td>https://www.fonq.nl/</td>
-      <td>1</td>
       <td>-</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
-      <td>5</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 26 columns</p>
+<p>2 rows × 27 columns</p>
 </div>
 
 
@@ -1565,7 +1766,8 @@ results.loc[~results["Bronnen DB"].str.strip().isin(sources.index.str.strip())][
 
 
 
-    Series([], Name: Bronnen DB, dtype: object)
+    822    Untitled
+    Name: Bronnen DB, dtype: object
 
 
 
@@ -1599,11 +1801,11 @@ results_sources.loc[results_sources["Commercialiteit"].isna()]
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
       <th>Created time</th>
@@ -1619,9 +1821,33 @@ results_sources.loc[results_sources["Commercialiteit"].isna()]
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>822</th>
+      <td>Just-in-case</td>
+      <td>Kangoeroe - Australie.nl</td>
+      <td>https://www.australie.nl/australie/reisgids/fl...</td>
+      <td>kangoeroe</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>Untitled</td>
+      <td>GetawayTravel©</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
   </tbody>
 </table>
-<p>0 rows × 57 columns</p>
+<p>1 rows × 58 columns</p>
 </div>
 
 
@@ -1637,7 +1863,7 @@ query
 
 
 
-    'auto 1885'
+    'greta thunberg'
 
 
 
@@ -1671,269 +1897,293 @@ results.loc[results["Query"].str.startswith(query)].sort_values(by="Ranking")
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
-      <th>Bron: Vrije labels</th>
       <th>Bron: doel</th>
-      <th>Trackers</th>
+      <th>Bron: Trackers</th>
+      <th>OnderzoekNr</th>
+      <th>Ranking</th>
       <th>Related to Bronnen DB test (Resultaten DB)</th>
       <th>Bronnen: URL domein</th>
-      <th>OnderzoekNr</th>
       <th>Query: Video Schooltv</th>
       <th>Created by</th>
       <th>Bron-Status</th>
-      <th>Ranking</th>
+      <th>Bron: Onderwerp</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>754</th>
+      <th>782</th>
       <td>Ja</td>
-      <td>Geschiedenis van de auto (1885-1904) - Wikipedia</td>
-      <td>https://nl.wikipedia.org/wiki/Geschiedenis_van...</td>
-      <td>auto 1885</td>
+      <td>Greta Thunberg - Wikipedia</td>
+      <td>https://nl.wikipedia.org/wiki/Greta_Thunberg</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
-      <td>community,informatie_primair_doel,user_generat...</td>
       <td>gebruikersplatform met kwaliteitsinformatie</td>
+      <td>1</td>
+      <td>1</td>
       <td>1</td>
       <td>NaN</td>
       <td>https://nl.wikipedia.org/</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
+      <td>-  (JJ 3, 9)</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
-      <td>1</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>755</th>
+      <th>783</th>
       <td>Just-in-case</td>
-      <td>auto 1885 - Google Zoeken Afbeeldingen</td>
-      <td>https://www.google.nl/search?sca_esv=596546401...</td>
-      <td>auto 1885</td>
+      <td>Greta Thunberg (@gretathunberg) • Instagram-fo...</td>
+      <td>https://www.instagram.com/gretathunberg/</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>instagram.com</td>
+      <td>(Meta)</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>gebruikersplatform geen kwaliteitsgarantie comm.</td>
+      <td>6</td>
+      <td>1</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>https://www.instagram.com/</td>
+      <td>-  (JJ 3, 9)</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>784</th>
+      <td>Ja</td>
+      <td>Greta Thunberg - Wikipedia</td>
+      <td>https://en.wikipedia.org/wiki/Greta_Thunberg</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>wikipedia.org</td>
+      <td>Wikimedia Foundation inc</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>gebruikersplatform met kwaliteitsinformatie</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>https://nl.wikipedia.org/</td>
+      <td>-  (JJ 3, 9)</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>785</th>
+      <td>Nee</td>
+      <td>Greta Thunberg (@GretaThunberg) / X</td>
+      <td>https://twitter.com/GretaThunberg</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>twitter.com X</td>
+      <td>X voorheen Twitter</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>gebruikersplatform geen kwaliteitsgarantie comm.</td>
+      <td>30</td>
+      <td>1</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>https://twitter.com/</td>
+      <td>-  (JJ 3, 9)</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>786</th>
+      <td>Just-in-case</td>
+      <td>greta thunberg - Google Zoeken Videos</td>
+      <td>https://www.google.nl/search?sca_esv=596572399...</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>zoekmachine_facet_link</td>
       <td>google.nl/com</td>
       <td>Aphabet</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>zoekmachine facet link</td>
       <td>navigational</td>
       <td>...</td>
-      <td>BigTech,zoekmachines</td>
-      <td>div. commercieel informatieproducten</td>
+      <td>informatieproduct div. commercieel</td>
       <td>13</td>
+      <td>1</td>
+      <td>5</td>
       <td>NaN</td>
       <td>https://www.google.com/</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
+      <td>-  (JJ 3, 9)</td>
       <td>Maarten Sprenger</td>
       <td>Almost completed</td>
-      <td>2</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>756</th>
+      <th>787</th>
       <td>Ja</td>
-      <td>Geschiedenis van de auto (voor 1885) - Wikipedia</td>
-      <td>https://nl.wikipedia.org/wiki/Geschiedenis_van...</td>
-      <td>auto 1885</td>
-      <td>wikipedia.org</td>
-      <td>Wikimedia Foundation inc</td>
+      <td>Greta Thunberg: Who is the climate activist an...</td>
+      <td>https://www.bbc.com/news/world-europe-49918719</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>bbc.com</td>
+      <td>BBC</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
-      <td>community,informatie_primair_doel,user_generat...</td>
-      <td>gebruikersplatform met kwaliteitsinformatie</td>
+      <td>publiek_mediaplatform (incl journalistiek)</td>
+      <td>13</td>
       <td>1</td>
-      <td>NaN</td>
-      <td>https://nl.wikipedia.org/</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
-      <td>Maarten Sprenger</td>
-      <td>Done</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>757</th>
-      <td>Ja</td>
-      <td>Wie bouwde de eerste auto? | historianet.nl</td>
-      <td>https://historianet.nl/techniek/uitvindingen/w...</td>
-      <td>auto 1885</td>
-      <td>historianet.nl</td>
-      <td>Bonnier Publications International AS (Noorweg...</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>about-voorbeeld,infinite_scroll,log_in (geheel...</td>
-      <td>div. commercieel informatieproducten</td>
-      <td>8</td>
-      <td>NaN</td>
-      <td>https://historianet.nl</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
-      <td>Maarten Sprenger</td>
-      <td>Needs peer-review</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>758</th>
-      <td>Ja</td>
-      <td>De geschiedenis van de auto</td>
-      <td>https://www.docukit.nl/spreekbeurt/de-geschied...</td>
-      <td>auto 1885</td>
-      <td>docukit.nl</td>
-      <td>Schoolsupport</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>bedrijfsinfo/uithangbord,doelgroep PO/8-12,inf...</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>https://www.docukit.nl/</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
-      <td>Maarten Sprenger</td>
-      <td>Done</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>759</th>
-      <td>Ja</td>
-      <td>Wie heeft de auto uit gevonden? | Willem Wever</td>
-      <td>https://willemwever.kro-ncrv.nl/vraag_antwoord...</td>
-      <td>auto 1885</td>
-      <td>willemwever.kro-ncrv.nl</td>
-      <td>KRO-NCRV</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>doelgroep PO/8-12,edutainment,infinite_scroll,...</td>
-      <td>kwaliteitscontent voor kinderen/jongeren,publi...</td>
-      <td>4</td>
-      <td>NaN</td>
-      <td>https://willemwever.kro-ncrv.nl/</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
-      <td>Maarten Sprenger</td>
-      <td>Done</td>
       <td>6</td>
-    </tr>
-    <tr>
-      <th>760</th>
-      <td>Nee</td>
-      <td>Geschiedenis van de auto - Wikikids</td>
-      <td>https://wikikids.nl/Geschiedenis_van_de_auto</td>
-      <td>auto 1885</td>
-      <td>wikikids.nl</td>
-      <td>Stichting Wikikids, ondersteund door Kennisnet...</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
       <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>community,doelgroep PO/8-12,informatie_primair...</td>
-      <td>comm. gebruikersplatform zonder kwaliteitsgara...</td>
-      <td>4</td>
-      <td>NaN</td>
-      <td>https://wikikids.nl/</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
+      <td>https://www.bbc.com</td>
+      <td>-  (JJ 3, 9)</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>788</th>
+      <td>Ja</td>
+      <td>Wie is Greta Thunberg? | NPO Kennis</td>
+      <td>https://npokennis.nl/story/596/wie-is-greta-th...</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>npokennis.nl</td>
+      <td>NPO Kennis (NTR)</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>publiek_mediaplatform (incl journalistiek)</td>
+      <td>32</td>
+      <td>1</td>
       <td>7</td>
-    </tr>
-    <tr>
-      <th>761</th>
-      <td>Just-in-case</td>
-      <td>Uitvinding van de auto | IsGeschiedenis</td>
-      <td>https://isgeschiedenis.nl/nieuws/uitvinding-va...</td>
-      <td>auto 1885</td>
-      <td>isgeschiedenis.nl</td>
-      <td>Isgeschiedenis.nl</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
       <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>edutainment</td>
-      <td>div. commercieel informatieproducten</td>
-      <td>3</td>
-      <td>NaN</td>
-      <td>https://isgeschiedenis.nl</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
+      <td>https://npokennis.nl</td>
+      <td>-  (JJ 3, 9)</td>
       <td>Maarten Sprenger</td>
       <td>Almost completed</td>
-      <td>8</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>762</th>
+      <th>789</th>
       <td>Just-in-case</td>
-      <td>Honderd jaar auto: 1885-1985 - Andrew Whyte, J...</td>
-      <td>https://www.deslegte.com/honderd-jaar-auto-188...</td>
-      <td>auto 1885</td>
-      <td>deslegte.com</td>
-      <td>De Slegte</td>
+      <td>Greta Thunberg | Facebook</td>
+      <td>https://www.facebook.com/gretathunbergsweden/</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>facebook.com</td>
+      <td>Meta</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>webshop-result page</td>
-      <td>transactional</td>
+      <td>navigational</td>
       <td>...</td>
-      <td>webshop</td>
-      <td>alleen webshop+productomschrijving</td>
-      <td>3</td>
-      <td>NaN</td>
-      <td>https://www.deslegte.com</td>
+      <td>gebruikersplatform geen kwaliteitsgarantie comm.</td>
+      <td>6</td>
       <td>1</td>
-      <td>- (klokhuis 2)</td>
-      <td>Maarten Sprenger</td>
-      <td>Almost completed</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>763</th>
-      <td>Nee</td>
-      <td>Geschiedenis van de auto (voor 1885) - Wikiwand</td>
-      <td>https://www.wikiwand.com/nl/Geschiedenis_van_d...</td>
-      <td>auto 1885</td>
-      <td>wikiwand.com</td>
-      <td>Wikiwand</td>
-      <td>complex</td>
-      <td>relevant</td>
+      <td>8</td>
       <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>wiki mirror/fork</td>
-      <td>div. commercieel informatieproducten</td>
-      <td>5</td>
-      <td>NaN</td>
-      <td>https://www.wikiwand.com</td>
-      <td>1</td>
-      <td>- (klokhuis 2)</td>
+      <td>https://www.facebook.com</td>
+      <td>-  (JJ 3, 9)</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>790</th>
+      <td>Ja</td>
+      <td>Nooit meer 'klimaatspijbelen', Greta Thunberg ...</td>
+      <td>https://nos.nl/artikel/2478331-nooit-meer-klim...</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>nos.nl</td>
+      <td>Nederlandse Omroep Stichting (NOS)</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>journalistiek informatieproduct,publiek_mediap...</td>
+      <td>14</td>
+      <td>1</td>
+      <td>9</td>
+      <td>NaN</td>
+      <td>https://nos.nl/</td>
+      <td>-  (JJ 3, 9)</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>791</th>
+      <td>Just-in-case</td>
+      <td>Hoe goed ken jij Greta Thunberg? Test je kenni...</td>
+      <td>https://www.ad.nl/sterren/hoe-goed-ken-jij-gre...</td>
+      <td>greta thunberg</td>
+      <td>niet_relevant</td>
+      <td>NaN</td>
+      <td>ad.nl</td>
+      <td>AD, DPG Media Group</td>
+      <td>nvt</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>journalistiek informatieproduct (betaald)</td>
+      <td>15</td>
+      <td>1</td>
       <td>10</td>
+      <td>NaN</td>
+      <td>https://www.ad.nl/</td>
+      <td>-  (JJ 3, 9)</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>792</th>
+      <td>Just-in-case</td>
+      <td>Greta Thunberg, maakt de weg vrij naar een duu...</td>
+      <td>https://justiceandpeace.nl/greta-thunberg-maak...</td>
+      <td>greta thunberg</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>justiceandpeace.nl</td>
+      <td>Justice &amp; Peace Nederland</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>informatie in het kader van goed doel</td>
+      <td>10</td>
+      <td>1</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>https://justiceandpeace.nl</td>
+      <td>-  (JJ 3, 9)</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>10 rows × 26 columns</p>
+<p>11 rows × 27 columns</p>
 </div>
 
 
@@ -1978,50 +2228,50 @@ all_queries.loc[all_queries["Query"] == "cristiano ronaldo"]
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>OK-100</th>
       <th>Query</th>
-      <th>Leeftijd</th>
-      <th>Onderwerp</th>
-      <th>Soort Query (select)</th>
-      <th>Google</th>
-      <th>'Samenvatting'?</th>
       <th>Add Results</th>
-      <th>Bronnen DB</th>
-      <th>Bronnen DB 1</th>
-      <th>...</th>
-      <th>Created time</th>
-      <th>Date</th>
-      <th>Extra (multi)</th>
-      <th>Extra (top-down)</th>
-      <th>Kennisvenster?</th>
-      <th>Opmerkingen</th>
-      <th>Ranking Conclusie</th>
-      <th>Resultaten DB</th>
+      <th>Google</th>
       <th>Video Facet</th>
       <th>Videos-Schooltv?</th>
+      <th>Kennisvenster?</th>
+      <th>'Samenvatting'?</th>
+      <th>Extra (top-down)</th>
+      <th>Opmerkingen</th>
+      <th>Soort Query (select)</th>
+      <th>...</th>
+      <th>Leeftijd</th>
+      <th>Resultaten DB</th>
+      <th>OK-100</th>
+      <th>Ranking Conclusie</th>
+      <th>Date</th>
+      <th>Bronnen DB</th>
+      <th>Created time</th>
+      <th>Bronnen DB 1</th>
+      <th>Bronnen: Thumbs up?</th>
+      <th>Bronnen: Toeg.</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>26</th>
-      <td>No</td>
+      <th>11</th>
       <td>cristiano ronaldo</td>
-      <td>11</td>
-      <td>Sport</td>
-      <td>Eén woord</td>
-      <td>https://www.google.com/search?q=cristiano+rona...</td>
-      <td>Nee</td>
       <td>Done</td>
+      <td>https://www.google.com/search?q=cristiano+rona...</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>...</td>
-      <td>July 18, 2023 7:47 PM</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
       <td>Ja</td>
+      <td>Nee</td>
+      <td>Gerelateerde zoekopdrachten (na 10), Meer om t...</td>
       <td>resultaten apart opgeslagen</td>
+      <td>Eén woord</td>
+      <td>...</td>
+      <td>11</td>
       <td>NaN</td>
+      <td>No</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>July 18, 2023 7:47 PM</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2063,11 +2313,11 @@ results_sources.loc[results_sources["Query"] == "cristiano ronaldo"]
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
       <th>Created time</th>
@@ -2085,7 +2335,7 @@ results_sources.loc[results_sources["Query"] == "cristiano ronaldo"]
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 57 columns</p>
+<p>0 rows × 58 columns</p>
 </div>
 
 
@@ -2142,11 +2392,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
       <th>Created by_result</th>
@@ -2168,11 +2418,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>De nachtbraker | Vogelbescherming</td>
       <td>https://www.vogelbescherming.nl/beleefdelente/...</td>
       <td>nachtbraker vogel</td>
+      <td>relevant</td>
+      <td>caption_txt</td>
       <td>Beleef de lente</td>
       <td>Vogelbescherming</td>
-      <td>te simpel</td>
-      <td>relevant</td>
-      <td>video/image-caption</td>
+      <td>te_simpel</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2192,11 +2442,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Braziliaanse voetballegende Pelé overleden op ...</td>
       <td>https://nos.nl/collectie/13920/artikel/2458125...</td>
       <td>braziliaanse voetballegende pele overleden</td>
-      <td>nos.nl</td>
-      <td>Nederlandse Omroep Stichting (NOS)</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>nos.nl</td>
+      <td>Nederlandse Omroep Stichting (NOS)</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2216,11 +2466,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Waterbuffel - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Waterbuffel</td>
       <td>waterbuffel</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2240,11 +2490,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Orgaan - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Orgaan#:~:text=E...</td>
       <td>Wat zijn organen</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2264,11 +2514,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Slavenhandel - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Slavenhandel</td>
       <td>Slavenhandel</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2312,11 +2562,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Toerisme Spiere-Helkijn | Leiestreek</td>
       <td>https://www.toerisme-leiestreek.be/nl/toerisme...</td>
       <td>spiere</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>toerisme-leiestreek.be</td>
       <td>Westtoer</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2336,11 +2586,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Diarree - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Diarree</td>
       <td>diaree</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2360,11 +2610,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Correct gebruik van aanhalingstekens – Correct...</td>
       <td>https://www.correctnederlands.nl/correct-gebru...</td>
       <td>wat is een begin aanhaling</td>
-      <td>correctnederlands.nl</td>
-      <td>Correct Nederlands, Frank den Hond</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>correctnederlands.nl</td>
+      <td>Correct Nederlands, Frank den Hond</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2384,11 +2634,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Brussels Hoofdstedelijk Gewest - Wikipedia</td>
       <td>https://nl.wikipedia.org/wiki/Brussels_Hoofdst...</td>
       <td>brussel</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>wikipedia.org</td>
       <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2408,11 +2658,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Koraalrif herstelt zich in enkele delen van Gr...</td>
       <td>https://www.vrt.be/vrtnws/nl/2022/08/04/koraal...</td>
       <td>het groot Barrierif</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>vrt.be</td>
       <td>VRT</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>Maarten Sprenger</td>
@@ -2428,7 +2678,7 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
     </tr>
   </tbody>
 </table>
-<p>377 rows × 58 columns</p>
+<p>377 rows × 59 columns</p>
 </div>
 
 
@@ -2452,7 +2702,7 @@ results_sources[column].sum()
 
 
 
-    178
+    13
 
 
 
@@ -2486,11 +2736,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
       <th>URL Moederbedrijf</th>
@@ -2507,112 +2757,160 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
   </thead>
   <tbody>
     <tr>
-      <th>514</th>
+      <th>882</th>
       <td>Ja</td>
-      <td>Wat is je spijsvertering? - Maag Lever Darm St...</td>
-      <td>https://www.mlds.nl/spijsvertering/wat-is-je-s...</td>
-      <td>taak slokdarm</td>
-      <td>mlds.nl</td>
-      <td>Maag Lever Darm Stichting</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Schooltv: Het paard - Van veulen tot volwassen...</td>
+      <td>https://schooltv.nl/video/het-paard-van-veulen...</td>
+      <td>video van paarden</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>schooltv.nl</td>
+      <td>ntr:</td>
+      <td>eenvoudig</td>
       <td>informatief</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>https://www.mlds.nl/cookieverklaring/</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3,1,9,2</td>
-      <td>informatief,informatief,informatief,informatief</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>253</th>
-      <td>Ja</td>
-      <td>Voortplanting (biologie) - Wikipedia</td>
-      <td>https://nl.wikipedia.org/wiki/Voortplanting_(b...</td>
-      <td>voortplanting</td>
-      <td>wikipedia.org</td>
-      <td>Wikimedia Foundation inc</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>https://wikimediafoundation.org/</td>
+      <td>https://ntr.nl/site/tekst/over-ntr/8</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>9,8,1,1,4,2,1,4,1,11,8,2,2,4,1,2,1,6,1,3,1,1,1...</td>
-      <td>informatief,informatief,informatief,informatie...</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>402</th>
-      <td>Ja</td>
-      <td>Watersnoodramp 1953 - Canon van Nederland</td>
-      <td>https://www.canonvannederland.nl/nl/zeeland/ve...</td>
-      <td>westerschelde waternoodsramp</td>
-      <td>canonvannederland.nl</td>
-      <td>Nederlands Openluchtmuseum / canonvannederland.nl</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>https://www.openluchtmuseum.nl/</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>https://www.canonvannederland.nl/nl/privacy#co...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>10,1,3</td>
+      <td>5,2,4</td>
       <td>informatief,informatief,informatief</td>
       <td>True</td>
       <td>True</td>
     </tr>
     <tr>
-      <th>422</th>
+      <th>912</th>
       <td>Ja</td>
-      <td>Marrons - Wikipedia</td>
-      <td>https://nl.wikipedia.org/wiki/Marrons</td>
-      <td>marrons</td>
-      <td>wikipedia.org</td>
-      <td>Wikimedia Foundation inc</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Array (Huisdierwijzers Ongewervelden)</td>
+      <td>https://www.huisdierinfo.be/huisdierwijzers/on...</td>
+      <td>Ongewervelde dieren</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>huisdierinfo.be</td>
+      <td>Huisdierinfo is een officiële website van de V...</td>
+      <td>eenvoudig</td>
       <td>informatief</td>
       <td>...</td>
-      <td>https://wikimediafoundation.org/</td>
+      <td>https://www.vlaanderen.be/organisaties/adminis...</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>https://omgeving.vlaanderen.be/cookieverklaring</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>9,8,1,1,4,2,1,4,1,11,8,2,2,4,1,2,1,6,1,3,1,1,1...</td>
-      <td>informatief,informatief,informatief,informatie...</td>
+      <td>7,3</td>
+      <td>informatief,informatief</td>
       <td>True</td>
       <td>True</td>
     </tr>
     <tr>
-      <th>443</th>
+      <th>973</th>
       <td>Ja</td>
-      <td>Ik heb diarree | Thuisarts.nl</td>
-      <td>https://www.thuisarts.nl/diarree/ik-heb-diarree</td>
-      <td>diaree</td>
-      <td>thuisarts.nl</td>
-      <td>Thuisarts.nl, Het Nederlands Huisartsen Genoot...</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Top 10 leuke weetjes - Steffie.nl</td>
+      <td>https://www.steffie.nl/nieuws/onderwerpen/top-...</td>
+      <td>wist je dat?</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>steffie.nl</td>
+      <td>stichting Leer Zelf Online</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>https://www.leerzelfonline.nl/home/</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>Ja</td>
+      <td>Welke landen horen bij het Verenigd Koninkrijk...</td>
+      <td>https://www.rijksoverheid.nl/onderwerpen/brexi...</td>
+      <td>engeland</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>rijksoverheid.nl</td>
+      <td>Rijksoverheid</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.rijksoverheid.nl/cookies</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6,9</td>
+      <td>informatief,informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>689</th>
+      <td>Ja</td>
+      <td>Gemeente Merelbeke | Vlaanderen.be</td>
+      <td>https://www.vlaanderen.be/organisaties/gemeent...</td>
+      <td>merelbeke</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>vlaanderen.be</td>
+      <td>TEAM TAALADVIES, Vlaamse Overheid</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.vlaanderen.be/over-vlaanderenbe/co...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5,6</td>
+      <td>informatief,informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>826</th>
+      <td>Ja</td>
+      <td>De kangoeroe</td>
+      <td>https://www.docukit.nl/spreekbeurt/de-kangoeroe</td>
+      <td>kangoeroe</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>docukit.nl</td>
+      <td>Schoolsupport</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>Schoolsupport</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>heel onduidelijk; geen toestemming…</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9,8,5,6</td>
+      <td>informatief,informatief,informatief,informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Ja</td>
+      <td>Gezond leven | Thuisarts.nl</td>
+      <td>https://www.thuisarts.nl/gezond-leven</td>
+      <td>leven</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>thuisarts.nl</td>
+      <td>Thuisarts.nl, Het Nederlands Huisartsen Genoot...</td>
+      <td>eenvoudig</td>
       <td>informatief</td>
       <td>...</td>
       <td>https://www.nhg.org/</td>
@@ -2627,40 +2925,16 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>673</th>
+      <th>847</th>
       <td>Ja</td>
-      <td>Houten galei | Industriemuseum</td>
-      <td>https://www.industriemuseum.be/nl/collectie-it...</td>
-      <td>galei</td>
-      <td>industriemuseum.be</td>
-      <td>Het Industriemuseum</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Leren over slootjes - IVN</td>
+      <td>https://www.ivn.nl/leren-over-de-natuur/alles-...</td>
+      <td>sloot</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>ivn.nl</td>
+      <td>IVN Natuureducatie</td>
+      <td>eenvoudig</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -2669,56 +2943,104 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>10</td>
-      <td>informatief</td>
+      <td>7,3</td>
+      <td>informatief,informatief</td>
       <td>True</td>
       <td>True</td>
     </tr>
     <tr>
-      <th>49</th>
+      <th>389</th>
       <td>Ja</td>
-      <td>Kwaliteit van leven | Volksgezondheid en Zorg</td>
-      <td>https://www.vzinfo.nl/Kwaliteit-van-leven</td>
-      <td>leven</td>
-      <td>vzinfo.nl</td>
-      <td>RIVM in opdracht van het Ministerie van Volksg...</td>
-      <td>redelijk begrijpelijk</td>
-      <td>misschien</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>https://www.vzinfo.nl/cookies</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>10</td>
-      <td>informatief</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>362</th>
-      <td>Ja</td>
-      <td>PowerPoint-presentatie Giraffe Wildlands.nl</td>
-      <td>https://www.wildlands.nl/uploads/animals/Diere...</td>
-      <td>waar leven giraffen</td>
-      <td>wildlands.nl</td>
-      <td>NaN</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Zo leefden de Romeinen</td>
+      <td>https://www.docukit.nl/spreekbeurt/zo-leefden-...</td>
+      <td>waar komt de naam Romen van</td>
       <td>relevant</td>
-      <td>pdf</td>
+      <td>NaN</td>
+      <td>docukit.nl</td>
+      <td>Schoolsupport</td>
+      <td>eenvoudig</td>
       <td>informatief</td>
       <td>...</td>
+      <td>Schoolsupport</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>heel onduidelijk; geen toestemming…</td>
       <td>NaN</td>
-      <td>https://www.wildlands.nl/privacybeleid</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>7,10,6,4</td>
+      <td>9,8,5,6</td>
       <td>informatief,informatief,informatief,informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>771</th>
+      <td>Ja</td>
+      <td>Je lichaam in de puberteit | Sense.info</td>
+      <td>https://sense.info/nl/je-lichaam/meisjeslichaa...</td>
+      <td>puberteit</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>sense.info</td>
+      <td>NaN</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,8</td>
+      <td>navigational,navigational,informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>361</th>
+      <td>Ja</td>
+      <td>Giraffen</td>
+      <td>https://www.docukit.nl/spreekbeurt/giraffen</td>
+      <td>waar leven giraffen</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>docukit.nl</td>
+      <td>Schoolsupport</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>Schoolsupport</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>heel onduidelijk; geen toestemming…</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9,8,5,6</td>
+      <td>informatief,informatief,informatief,informatief</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>742</th>
+      <td>Ja</td>
+      <td>Nijlpaard | Lees alles over het nijlpaard op W...</td>
+      <td>https://www.wildvanfreek.nl/nijlpaard/</td>
+      <td>nijlpaard</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>wildvanfreek.nl</td>
+      <td>Blink uitgevers en Wild van Freek bv</td>
+      <td>eenvoudig</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>https://blink.nl/</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.wildvanfreek.nl/privacy-en-cookieb...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4,9</td>
+      <td>informatief,informatief</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -2728,11 +3050,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Belgische koning Albert (89) onwel geworden en...</td>
       <td>https://nos.nl/artikel/2480443-belgische-konin...</td>
       <td>koning van belgieje</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>nos.nl</td>
       <td>Nederlandse Omroep Stichting (NOS)</td>
       <td>eenvoudig</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>nvt</td>
@@ -2746,33 +3068,9 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
       <td>True</td>
     </tr>
-    <tr>
-      <th>420</th>
-      <td>Ja</td>
-      <td>Vertrekhal Schiphol alleen toegankelijk voor r...</td>
-      <td>https://www.parool.nl/nederland/vertrekhal-sch...</td>
-      <td>vertrekhal met inchekbalie</td>
-      <td>parool.nl</td>
-      <td>Het Parool, DPG Media B.V</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>https://www.dpgmediagroup.com/nl-NL</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>https://privacy.dpgmedia.nl/nl/document/cookie...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>10,5,8,10</td>
-      <td>informatief,informatief,informatief,informatief</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
   </tbody>
 </table>
-<p>178 rows × 59 columns</p>
+<p>13 rows × 60 columns</p>
 </div>
 
 
@@ -2805,7 +3103,7 @@ results_sources[column].sum()
 
 
 
-    31
+    54
 
 
 
@@ -2839,11 +3137,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
       <th>SlimZ Resultaten DB</th>
@@ -2860,16 +3158,40 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
   </thead>
   <tbody>
     <tr>
+      <th>0</th>
+      <td>Just-in-case</td>
+      <td>Schotse - 2 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/schotse#:~:text=...</td>
+      <td>wat betekent schotse</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
       <th>172</th>
       <td>Nee</td>
       <td>Blote vrouwen | Naaktkrant</td>
       <td>https://www.naaktkrant.nl/category/blote-vrouwen/</td>
       <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>NaN</td>
       <td>naaktkrant.nl</td>
       <td>naaktkrant</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
@@ -2884,16 +3206,112 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
+      <th>421</th>
+      <td>Just-in-case</td>
+      <td>Vertrekhal Schiphol » Alle Info over de Schiph...</td>
+      <td>https://www.vliegenenparkeren.nl/blog/vertrekh...</td>
+      <td>vertrekhal met inchekbalie</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>vliegenenparkeren.nl</td>
+      <td>Vliegen en Parkeren is onderdeel van ROOSH Pla...</td>
+      <td>nvt</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Just-in-case</td>
+      <td>Schots - 7 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/schots</td>
+      <td>wat betekent schotse</td>
+      <td>niet_relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>665</th>
+      <td>Just-in-case</td>
+      <td>Galei - 18 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/galei</td>
+      <td>galei</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>Just-in-case</td>
+      <td>Trilling - 8 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/trilling</td>
+      <td>trilling</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
       <th>173</th>
       <td>Nee</td>
       <td>Naakte Vrouwen Verzameld - Seks Met</td>
       <td>https://seksmet.nl/naaktfotos/naakte-vrouwen-v...</td>
       <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>NaN</td>
       <td>seksmet.nl</td>
       <td>Seks Met</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
@@ -2913,11 +3331,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Verschrikkelijk: mama vergeet peuter op autoda...</td>
       <td>https://www.nieuwsblad.be/cnt/dmf20190107_0408...</td>
       <td>mens red peuter van dak racist</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>nieuwsblad.be</td>
       <td>Het Nieuwsblad, MEDIAHUIS N.V.</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -2937,11 +3355,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Meest bekeken mooie naakte vrouwen, de top 100...</td>
       <td>https://seksmet.nl/meest-bekeken-mooie-naakte-...</td>
       <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>NaN</td>
       <td>seksmet.nl</td>
       <td>Seks Met</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -2956,25 +3374,121 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>164</th>
+      <th>414</th>
       <td>Nee</td>
-      <td>Zebrahaai | DierenWiki | Zebrahaai</td>
-      <td>https://dierenwiki.nl/wiki/zebrahaai</td>
-      <td>zebrahaai</td>
-      <td>dierenwiki.nl</td>
-      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Schiphol vertrekhal – Vertrektijden Schiphol</td>
+      <td>https://www.vertrektijden-schiphol.nl/schiphol...</td>
+      <td>vertrekhal met inchekbalie</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>vertrektijden-schiphol.nl</td>
+      <td>Twenty Four Webvertising B.V. ? https://www.si...</td>
+      <td>nvt</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Footer. Beheerd door Google. Voldoet aan IAB T...</td>
+      <td>-</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>4,5,10,5,6</td>
+      <td>4</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>615</th>
+      <td>Just-in-case</td>
+      <td>Braziliaanse voetballegende Pelé op 82-jarige ...</td>
+      <td>https://www.rtlnieuws.nl/sport/voetbal/artikel...</td>
+      <td>braziliaanse voetballegende pele overleden</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>rtlnieuws.nl</td>
+      <td>RTL Nederland B.V.</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.rtl.nl/uitleg-over-cookies.html</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7,8,4,6,11,7</td>
+      <td>informatief,navigational,informatief,informati...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>696</th>
+      <td>Nee</td>
+      <td>Vroege vogel of eerder een nachtbraker? Wat je...</td>
+      <td>https://www.hln.be/gezond-en-gelukkig/vroege-v...</td>
+      <td>nachtbraker vogel</td>
+      <td>niet_relevant</td>
+      <td>NaN</td>
+      <td>hln.be</td>
+      <td>DPG Media Group</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.dpgmedia.be/nl/document/cookie...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8,7,9,4</td>
+      <td>informatief,informatief,navigational,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>844</th>
+      <td>Just-in-case</td>
+      <td>Sloot - 15 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/sloot</td>
+      <td>sloot</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
       <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>884</th>
+      <td>Twijfel</td>
+      <td>Super Grappige En Schattige Paarden Filmpjes |...</td>
+      <td>https://www.youtube.com/watch?v=kqzTVEKqRnM</td>
+      <td>video van paarden</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>youtube.com/@YTtechsupportint todo</td>
+      <td>Paarden Club NL</td>
+      <td>te_simpel</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://policies.google.com/technologies/cooki...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>informatief</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
@@ -2985,11 +3499,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Straatkinderen. slapen op stenen, eten uit vui...</td>
       <td>https://docplayer.nl/2555433-Straatkinderen-sl...</td>
       <td>Hoe komen straatkinderen aan eten</td>
+      <td>relevant</td>
+      <td>pdf</td>
       <td>docplayer.nl</td>
       <td>Vladimir Nesterenko</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>pdf</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3009,11 +3523,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Gratis Naakte Vrouwen pornovideo's | xHamster</td>
       <td>https://nl.xhamster.com/tags/naked-women</td>
       <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>NaN</td>
       <td>xhamster.com</td>
       <td>xHamster.com</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
@@ -3028,16 +3542,16 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>357</th>
+      <th>164</th>
       <td>Nee</td>
-      <td>Giraffen | DierenWiki - Evenhoevige dieren - G...</td>
-      <td>https://dierenwiki.nl/wiki/giraffen</td>
-      <td>waar leven giraffen</td>
-      <td>dierenwiki.nl</td>
-      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
-      <td>complex</td>
+      <td>Zebrahaai | DierenWiki | Zebrahaai</td>
+      <td>https://dierenwiki.nl/wiki/zebrahaai</td>
+      <td>zebrahaai</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>dierenwiki.nl</td>
+      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3057,11 +3571,59 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Otter | DierenWiki | Otter</td>
       <td>https://dierenwiki.nl/wiki/otter</td>
       <td>otter kenmerken</td>
-      <td>dierenwiki.nl</td>
-      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>dierenwiki.nl</td>
+      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Footer. Beheerd door Google. Voldoet aan IAB T...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4,5,10,5,6</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>Nee</td>
+      <td>De zebrahaai (Stegostoma fasciatum) is een ong...</td>
+      <td>https://dierpedia.nl/haaien/zebrahaai/</td>
+      <td>zebrahaai</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>dierpedia.nl</td>
+      <td>SEO-test door online marketingbureau Heers</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>357</th>
+      <td>Nee</td>
+      <td>Giraffen | DierenWiki - Evenhoevige dieren - G...</td>
+      <td>https://dierenwiki.nl/wiki/giraffen</td>
+      <td>waar leven giraffen</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>dierenwiki.nl</td>
+      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
+      <td>complex</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3081,11 +3643,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Blote vrouwen gratis kijken! Geile foto's van ...</td>
       <td>https://blotevrouwen.net/</td>
       <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>homepage</td>
       <td>blotevrouwen.net</td>
       <td>Blote vrouwen</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
@@ -3100,49 +3662,25 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>165</th>
+      <th>915</th>
       <td>Nee</td>
-      <td>De zebrahaai (Stegostoma fasciatum) is een ong...</td>
-      <td>https://dierpedia.nl/haaien/zebrahaai/</td>
-      <td>zebrahaai</td>
-      <td>dierpedia.nl</td>
-      <td>SEO-test door online marketingbureau Heers</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Ongewervelden | DierenWiki | Ongewervelden</td>
+      <td>https://dierenwiki.nl/wiki/ongewervelden</td>
+      <td>Ongewervelde dieren</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>dierenwiki.nl</td>
+      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
+      <td>complex</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>Footer. Beheerd door Google. Voldoet aan IAB T...</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>5</td>
-      <td>informatief</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>177</th>
-      <td>Nee</td>
-      <td>Dikke Geile Tieten Borsten Blote Vrouwen Meide...</td>
-      <td>https://iedereennaakt.nl/geile/blote-borsten/</td>
-      <td>echte naakte vrouw</td>
-      <td>iedereennaakt.nl</td>
-      <td>NaN</td>
-      <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
-      <td>navigational</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>6,8</td>
-      <td>navigational,navigational</td>
+      <td>4,5,10,5,6</td>
+      <td>informatief,informatief,informatief,informatie...</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
@@ -3153,11 +3691,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Leuke weetjes die jij zeker nog niet kende!</td>
       <td>https://superspreekbeurt.nl/leuke-weetjes</td>
       <td>wist je dat?</td>
-      <td>superspreekbeurt.nl</td>
-      <td>? M. Bok volgens SIDN</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>superspreekbeurt.nl</td>
+      <td>? M. Bok volgens SIDN</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3172,40 +3710,16 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>915</th>
-      <td>Nee</td>
-      <td>Ongewervelden | DierenWiki | Ongewervelden</td>
-      <td>https://dierenwiki.nl/wiki/ongewervelden</td>
-      <td>Ongewervelde dieren</td>
-      <td>dierenwiki.nl</td>
-      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
-      <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Footer. Beheerd door Google. Voldoet aan IAB T...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4,5,10,5,6</td>
-      <td>informatief,informatief,informatief,informatie...</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-    <tr>
       <th>158</th>
       <td>Nee</td>
       <td>krant De schoolkrant is terug! Vrijdag 21 dece...</td>
       <td>https://docplayer.nl/129339563-Krant-de-school...</td>
       <td>juf hanne de leerboom</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>docplayer.nl</td>
       <td>Vladimir Nesterenko</td>
       <td>complex</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3220,16 +3734,16 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>680</th>
-      <td>Nee</td>
-      <td>Ervaren mannen en vrouwen seks hetzelfde?</td>
-      <td>https://www.womenshealthmag.com/nl/relaties-se...</td>
-      <td>seks</td>
-      <td>womenshealthmag.com</td>
-      <td>Women's Health, Onderdeel van Hearst Netherlands</td>
-      <td>complex</td>
+      <th>34</th>
+      <td>Twijfel</td>
+      <td>Fairtrade Max Havelaar - Allesduurzaam</td>
+      <td>https://www.allesduurzaam.nl/keurmerken/keurme...</td>
+      <td>keurmerk max</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>allesduurzaam.nl</td>
+      <td>Allesduurzaam.nl, Pear Online (hosting)</td>
+      <td>complex</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3237,119 +3751,47 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>7</td>
+      <td>6</td>
       <td>informatief</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
     </tr>
     <tr>
-      <th>480</th>
-      <td>Nee</td>
-      <td>#DURFTEVRAGEN: Wat is het hoogste gebouw van W...</td>
-      <td>https://kw.be/nieuws/samenleving/durftevragen-...</td>
-      <td>welken gebouwen zijn er in West-Vlaanderen</td>
-      <td>kw.be</td>
-      <td>De Krant van West-Vlaanderen is onderdeel van ...</td>
-      <td>complex</td>
-      <td>relevant</td>
-      <td>pdf</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>via footer pop-up</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>7,8</td>
-      <td>informatief,informatief</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>660</th>
+      <th>24</th>
       <td>Just-in-case</td>
-      <td>Groot Barrièrerif — Google Arts &amp; Culture</td>
-      <td>https://artsandculture.google.com/entity/m0jbx...</td>
-      <td>het groot Barrierif</td>
-      <td>artsandculture.google.com</td>
-      <td>Alphabet</td>
-      <td>redelijk begrijpelijk</td>
+      <td>Het bruist in België: zo viert koning Filip zi...</td>
+      <td>https://www.rtlnieuws.nl/entertainment/royalty...</td>
+      <td>koning van belgieje</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>rtlnieuws.nl</td>
+      <td>RTL Nederland B.V.</td>
+      <td>complex</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>https://privacy.rtl.nl/uitleg-over-cookies.html</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>8</td>
-      <td>informatief</td>
+      <td>7,8,4,6,11,7</td>
+      <td>informatief,navigational,informatief,informati...</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
     </tr>
     <tr>
-      <th>609</th>
+      <th>177</th>
       <td>Nee</td>
-      <td>Camille Dhont - KW.be</td>
-      <td>https://kw.be/p/camille-dhont/</td>
-      <td>camille dhont</td>
-      <td>kw.be</td>
-      <td>De Krant van West-Vlaanderen is onderdeel van ...</td>
-      <td>redelijk begrijpelijk</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>via footer pop-up</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>7,8</td>
-      <td>informatief,informatief</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>418</th>
-      <td>Nee</td>
-      <td>Vertrektijden - Info Schiphol</td>
-      <td>http://www.infoschiphol.nl/tijden/vertrektijde...</td>
-      <td>vertrekhal met inchekbalie</td>
-      <td>infoschiphol.nl</td>
-      <td>E-smart is een slim netwerk op internet bedach...</td>
-      <td>nvt</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>8</td>
-      <td>informatief</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>179</th>
-      <td>Nee</td>
-      <td>Amateur Sex Naakt Foto's Delen Met Amateurs Ie...</td>
-      <td>https://iedereennaakt.nl/</td>
+      <td>Dikke Geile Tieten Borsten Blote Vrouwen Meide...</td>
+      <td>https://iedereennaakt.nl/geile/blote-borsten/</td>
       <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>NaN</td>
       <td>iedereennaakt.nl</td>
       <td>NaN</td>
       <td>nvt</td>
-      <td>misschien</td>
-      <td>NaN</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
@@ -3364,25 +3806,145 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>160</th>
+      <th>680</th>
       <td>Nee</td>
-      <td>DE VEERBOOT PRAKTISCH - PDF Free Download</td>
-      <td>https://docplayer.nl/160008580-De-veerboot-pra...</td>
-      <td>juf hanne de leerboom</td>
-      <td>docplayer.nl</td>
-      <td>Vladimir Nesterenko</td>
-      <td>complex</td>
+      <td>Ervaren mannen en vrouwen seks hetzelfde?</td>
+      <td>https://www.womenshealthmag.com/nl/relaties-se...</td>
+      <td>seks</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>womenshealthmag.com</td>
+      <td>Women's Health, Onderdeel van Hearst Netherlands</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>530</th>
+      <td>Nee</td>
+      <td>Walter Baele geeft de Sint in nieuw kinderboek...</td>
+      <td>https://www.hln.be/kunst-en-literatuur/walter-...</td>
+      <td>mens red peuter van dak racist</td>
+      <td>niet_relevant</td>
+      <td>NaN</td>
+      <td>hln.be</td>
+      <td>DPG Media Group</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.dpgmedia.be/nl/document/cookie...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8,7,9,4</td>
+      <td>informatief,informatief,navigational,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>Just-in-case</td>
+      <td>Geld | RTL Nieuws</td>
+      <td>https://www.rtlnieuws.nl/tags/onderwerpen/econ...</td>
+      <td>geld</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>rtlnieuws.nl</td>
+      <td>RTL Nederland B.V.</td>
+      <td>nvt</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>https://docplayer.nl/support/privacy-policy/</td>
+      <td>https://privacy.rtl.nl/uitleg-over-cookies.html</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>6,8,4</td>
-      <td>informatief,navigational,informatief</td>
+      <td>7,8,4,6,11,7</td>
+      <td>informatief,navigational,informatief,informati...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>Just-in-case</td>
+      <td>Orgaan - 25 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/orgaan</td>
+      <td>Wat zijn organen</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>480</th>
+      <td>Nee</td>
+      <td>#DURFTEVRAGEN: Wat is het hoogste gebouw van W...</td>
+      <td>https://kw.be/nieuws/samenleving/durftevragen-...</td>
+      <td>welken gebouwen zijn er in West-Vlaanderen</td>
+      <td>relevant</td>
+      <td>pdf</td>
+      <td>kw.be</td>
+      <td>De Krant van West-Vlaanderen is onderdeel van ...</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>via footer pop-up</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7,8</td>
+      <td>informatief,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>339</th>
+      <td>Just-in-case</td>
+      <td>Nog een mensensoort ontdekt in ons DNA | RTL N...</td>
+      <td>https://www.rtlnieuws.nl/nieuws/buitenland/art...</td>
+      <td>welke stammen zijn er in sierra leone</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>rtlnieuws.nl</td>
+      <td>RTL Nederland B.V.</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.rtl.nl/uitleg-over-cookies.html</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7,8,4,6,11,7</td>
+      <td>informatief,navigational,informatief,informati...</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
@@ -3393,11 +3955,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>21 nutteloze feiten waarmee je interessant kun...</td>
       <td>https://www.menshealth.com/nl/lifestyle/a26514...</td>
       <td>wist je dat?</td>
-      <td>menshealth.com</td>
-      <td>Men's Health, Hearst Magazines Netherlands BV</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>menshealth.com</td>
+      <td>Men's Health, Hearst Magazines Netherlands BV</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3412,16 +3974,40 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>180</th>
+      <th>160</th>
       <td>Nee</td>
-      <td>Naakte Vrouwen Porno Video's | Pornhub.com</td>
-      <td>https://nl.pornhub.com/video/search?search=naa...</td>
-      <td>echte naakte vrouw</td>
-      <td>pornhub.com</td>
-      <td>Pornhub.com</td>
-      <td>nvt</td>
-      <td>misschien</td>
+      <td>DE VEERBOOT PRAKTISCH - PDF Free Download</td>
+      <td>https://docplayer.nl/160008580-De-veerboot-pra...</td>
+      <td>juf hanne de leerboom</td>
+      <td>relevant</td>
       <td>NaN</td>
+      <td>docplayer.nl</td>
+      <td>Vladimir Nesterenko</td>
+      <td>complex</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://docplayer.nl/support/privacy-policy/</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6,8,4</td>
+      <td>informatief,navigational,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>Nee</td>
+      <td>Amateur Sex Naakt Foto's Delen Met Amateurs Ie...</td>
+      <td>https://iedereennaakt.nl/</td>
+      <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>homepage</td>
+      <td>iedereennaakt.nl</td>
+      <td>NaN</td>
+      <td>nvt</td>
       <td>navigational</td>
       <td>...</td>
       <td>NaN</td>
@@ -3429,8 +4015,176 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>9</td>
+      <td>6,8</td>
+      <td>navigational,navigational</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>Nee</td>
+      <td>De wolf is helemaal terug. Wat eet hij graag? ...</td>
+      <td>https://www.hln.be/dieren/de-wolf-is-helemaal-...</td>
+      <td>paard hond en wolf</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>hln.be</td>
+      <td>DPG Media Group</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.dpgmedia.be/nl/document/cookie...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8,7,9,4</td>
+      <td>informatief,informatief,navigational,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>490</th>
+      <td>Just-in-case</td>
+      <td>Foetus - 22 definities - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/foetus</td>
+      <td>wat is een foetus?</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>609</th>
+      <td>Nee</td>
+      <td>Camille Dhont - KW.be</td>
+      <td>https://kw.be/p/camille-dhont/</td>
+      <td>camille dhont</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>kw.be</td>
+      <td>De Krant van West-Vlaanderen is onderdeel van ...</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>via footer pop-up</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7,8</td>
+      <td>informatief,informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>470</th>
+      <td>Just-in-case</td>
+      <td>Autosport | RTL Nieuws</td>
+      <td>https://www.rtlnieuws.nl/tags/onderwerpen/spor...</td>
+      <td>autosport</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>rtlnieuws.nl</td>
+      <td>RTL Nederland B.V.</td>
+      <td>nvt</td>
       <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.rtl.nl/uitleg-over-cookies.html</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7,8,4,6,11,7</td>
+      <td>informatief,navigational,informatief,informati...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>660</th>
+      <td>Just-in-case</td>
+      <td>Groot Barrièrerif — Google Arts &amp; Culture</td>
+      <td>https://artsandculture.google.com/entity/m0jbx...</td>
+      <td>het groot Barrierif</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>artsandculture.google.com</td>
+      <td>Alphabet</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>418</th>
+      <td>Nee</td>
+      <td>Vertrektijden - Info Schiphol</td>
+      <td>http://www.infoschiphol.nl/tijden/vertrektijde...</td>
+      <td>vertrekhal met inchekbalie</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>infoschiphol.nl</td>
+      <td>E-smart is een slim netwerk op internet bedach...</td>
+      <td>nvt</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>Just-in-case</td>
+      <td>Spiere - definitie - Encyclo</td>
+      <td>https://www.encyclo.nl/begrip/spiere</td>
+      <td>spiere</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>encyclo.nl</td>
+      <td>Slot Webcommerce bv.</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://www.encyclo.nl/privacy.php</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,2,7,2,9,8,2,4</td>
+      <td>informatief,informatief,informatief,informatie...</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
@@ -3441,11 +4195,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Dit zijn simpele tips om nog betere seks te he...</td>
       <td>https://www.cosmopolitan.com/nl/liefde-en-sex/...</td>
       <td>seks</td>
-      <td>cosmopolitan.com</td>
-      <td>Hearst Media Nederland</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>cosmopolitan.com</td>
+      <td>Hearst Media Nederland</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3455,6 +4209,30 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>NaN</td>
       <td>9</td>
       <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>692</th>
+      <td>Nee</td>
+      <td>Merelbeke | http://hln.be</td>
+      <td>https://www.hln.be/merelbeke/?referrer=https%3...</td>
+      <td>merelbeke</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>hln.be</td>
+      <td>DPG Media Group</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.dpgmedia.be/nl/document/cookie...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8,7,9,4</td>
+      <td>informatief,informatief,navigational,informatief</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
@@ -3465,11 +4243,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Hoe word je als nachtbraker net zo gelukkig al...</td>
       <td>https://www.indespiegel.nl/psychologie/hoe-wor...</td>
       <td>nachtbraker vogel</td>
+      <td>niet_relevant</td>
+      <td>NaN</td>
       <td>indespiegel.nl</td>
       <td>In de Spiegel - Terug naar Moeder Natuur /Valk...</td>
       <td>complex</td>
-      <td>niet_relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3479,6 +4257,30 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>NaN</td>
       <td>9</td>
       <td>informatief</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>Nee</td>
+      <td>Naakte Vrouwen Porno Video's | Pornhub.com</td>
+      <td>https://nl.pornhub.com/video/search?search=naa...</td>
+      <td>echte naakte vrouw</td>
+      <td>misschien</td>
+      <td>NaN</td>
+      <td>pornhub.com</td>
+      <td>Pornhub.com</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9</td>
+      <td>navigational</td>
       <td>False</td>
       <td>False</td>
       <td>True</td>
@@ -3489,11 +4291,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>Kerstmis</td>
       <td>https://www.wettelijke-feestdagen.nl/Feestdage...</td>
       <td>kerstmis</td>
-      <td>wettelijke-feestdagen.nl</td>
-      <td>Netpulse nv/Netpulse BVBA, geregistreerd in Be...</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>wettelijke-feestdagen.nl</td>
+      <td>Netpulse nv/Netpulse BVBA, geregistreerd in Be...</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3508,40 +4310,16 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
-      <th>181</th>
-      <td>Nee</td>
-      <td>nl.biguz.net</td>
-      <td>https://nl.biguz.net/3104783/echte+naakte+vrou...</td>
-      <td>echte naakte vrouw</td>
-      <td>biguz.net</td>
-      <td>Biguz ?</td>
-      <td>nvt</td>
-      <td>404</td>
-      <td>NaN</td>
-      <td>navigational</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>10</td>
-      <td>navigational</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-    <tr>
       <th>743</th>
       <td>Nee</td>
       <td>Nijlpaarden | DierenWiki | Zoogdieren &gt; Nijlpa...</td>
       <td>https://dierenwiki.nl/wiki/nijlpaarden</td>
       <td>nijlpaard</td>
-      <td>dierenwiki.nl</td>
-      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
-      <td>redelijk begrijpelijk</td>
       <td>relevant</td>
       <td>NaN</td>
+      <td>dierenwiki.nl</td>
+      <td>KD Internet Services B.V.  - Dirk Braam - BTW:...</td>
+      <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3556,16 +4334,64 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>True</td>
     </tr>
     <tr>
+      <th>181</th>
+      <td>Nee</td>
+      <td>nl.biguz.net</td>
+      <td>https://nl.biguz.net/3104783/echte+naakte+vrou...</td>
+      <td>echte naakte vrouw</td>
+      <td>404</td>
+      <td>NaN</td>
+      <td>biguz.net</td>
+      <td>Biguz ?</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10</td>
+      <td>navigational</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Ja</td>
+      <td>Correct gebruik van aanhalingstekens – Correct...</td>
+      <td>https://www.correctnederlands.nl/correct-gebru...</td>
+      <td>wat is een begin aanhaling</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>correctnederlands.nl</td>
+      <td>Correct Nederlands, Frank den Hond</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10</td>
+      <td>informatief</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
       <th>170</th>
       <td>Nee</td>
       <td>Geboorte zebrahaai</td>
       <td>http://voormijnhuisdier.nl/CMS/Geboorte_zebrah...</td>
       <td>zebrahaai</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>voormijnhuisdier.nl</td>
       <td>-</td>
       <td>nvt</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3585,11 +4411,11 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>17 gekke weetjes over je lichaam die je écht n...</td>
       <td>https://rumag.nl/17-dingen-lichaam/</td>
       <td>wist je dat?</td>
+      <td>relevant</td>
+      <td>NaN</td>
       <td>rumag.nl</td>
       <td>Rumag. &gt; Just Another Network</td>
       <td>eenvoudig</td>
-      <td>relevant</td>
-      <td>NaN</td>
       <td>informatief</td>
       <td>...</td>
       <td>NaN</td>
@@ -3603,9 +4429,33 @@ results_sources.loc[results_sources[column]].sort_values(by="Ranking")
       <td>False</td>
       <td>True</td>
     </tr>
+    <tr>
+      <th>733</th>
+      <td>Just-in-case</td>
+      <td>Prinses Amalia | RTL Nieuws</td>
+      <td>https://www.rtlnieuws.nl/tags/personen/prinses...</td>
+      <td>amalia</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>rtlnieuws.nl</td>
+      <td>RTL Nederland B.V.</td>
+      <td>nvt</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://privacy.rtl.nl/uitleg-over-cookies.html</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7,8,4,6,11,7</td>
+      <td>informatief,navigational,informatief,informati...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
   </tbody>
 </table>
-<p>31 rows × 60 columns</p>
+<p>54 rows × 61 columns</p>
 </div>
 
 
@@ -3628,7 +4478,7 @@ plt.show()
 
 
     
-![png](analysis_files/analysis_47_0.png)
+![png](analysis_files/analysis_49_0.png)
     
 
 
@@ -3662,6 +4512,7 @@ ax.bar_label(ax.containers[0])
     [Text(0, 0, '1'),
      Text(0, 0, '1'),
      Text(0, 0, '1'),
+     Text(0, 0, '1'),
      Text(0, 0, '2'),
      Text(0, 0, '2'),
      Text(0, 0, '2'),
@@ -3669,26 +4520,25 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '3'),
      Text(0, 0, '4'),
      Text(0, 0, '4'),
+     Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '6'),
-     Text(0, 0, '7'),
-     Text(0, 0, '8'),
      Text(0, 0, '8'),
      Text(0, 0, '9'),
      Text(0, 0, '10'),
+     Text(0, 0, '11'),
      Text(0, 0, '12'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
      Text(0, 0, '17'),
+     Text(0, 0, '19'),
+     Text(0, 0, '19'),
      Text(0, 0, '22'),
      Text(0, 0, '23'),
-     Text(0, 0, '24'),
-     Text(0, 0, '24'),
-     Text(0, 0, '24'),
      Text(0, 0, '26'),
      Text(0, 0, '29'),
      Text(0, 0, '33'),
@@ -3699,6 +4549,8 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '38'),
      Text(0, 0, '38'),
      Text(0, 0, '41'),
+     Text(0, 0, '43'),
+     Text(0, 0, '45'),
      Text(0, 0, '47'),
      Text(0, 0, '50'),
      Text(0, 0, '56'),
@@ -3708,22 +4560,22 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '77'),
      Text(0, 0, '81'),
      Text(0, 0, '84'),
-     Text(0, 0, '98'),
+     Text(0, 0, '99'),
      Text(0, 0, '132'),
      Text(0, 0, '134'),
      Text(0, 0, '134'),
-     Text(0, 0, '140'),
-     Text(0, 0, '151'),
-     Text(0, 0, '180'),
-     Text(0, 0, '197'),
-     Text(0, 0, '230'),
-     Text(0, 0, '261')]
+     Text(0, 0, '142'),
+     Text(0, 0, '152'),
+     Text(0, 0, '176'),
+     Text(0, 0, '195'),
+     Text(0, 0, '229'),
+     Text(0, 0, '285')]
 
 
 
 
     
-![png](analysis_files/analysis_49_1.png)
+![png](analysis_files/analysis_51_1.png)
     
 
 
@@ -3752,27 +4604,25 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '4'),
+    [Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '6'),
-     Text(0, 0, '7'),
-     Text(0, 0, '8'),
      Text(0, 0, '8'),
      Text(0, 0, '9'),
      Text(0, 0, '10'),
+     Text(0, 0, '11'),
      Text(0, 0, '12'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
      Text(0, 0, '17'),
+     Text(0, 0, '19'),
+     Text(0, 0, '19'),
      Text(0, 0, '22'),
      Text(0, 0, '23'),
-     Text(0, 0, '24'),
-     Text(0, 0, '24'),
-     Text(0, 0, '24'),
      Text(0, 0, '26'),
      Text(0, 0, '29'),
      Text(0, 0, '33'),
@@ -3783,6 +4633,8 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '38'),
      Text(0, 0, '38'),
      Text(0, 0, '41'),
+     Text(0, 0, '43'),
+     Text(0, 0, '45'),
      Text(0, 0, '47'),
      Text(0, 0, '50'),
      Text(0, 0, '56'),
@@ -3792,22 +4644,22 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '77'),
      Text(0, 0, '81'),
      Text(0, 0, '84'),
-     Text(0, 0, '98'),
+     Text(0, 0, '99'),
      Text(0, 0, '132'),
      Text(0, 0, '134'),
      Text(0, 0, '134'),
-     Text(0, 0, '140'),
-     Text(0, 0, '151'),
-     Text(0, 0, '180'),
-     Text(0, 0, '197'),
-     Text(0, 0, '230'),
-     Text(0, 0, '261')]
+     Text(0, 0, '142'),
+     Text(0, 0, '152'),
+     Text(0, 0, '176'),
+     Text(0, 0, '195'),
+     Text(0, 0, '229'),
+     Text(0, 0, '285')]
 
 
 
 
     
-![png](analysis_files/analysis_50_1.png)
+![png](analysis_files/analysis_52_1.png)
     
 
 
@@ -3835,22 +4687,22 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '98'),
+    [Text(0, 0, '99'),
      Text(0, 0, '132'),
      Text(0, 0, '134'),
      Text(0, 0, '134'),
-     Text(0, 0, '140'),
-     Text(0, 0, '151'),
-     Text(0, 0, '180'),
-     Text(0, 0, '197'),
-     Text(0, 0, '230'),
-     Text(0, 0, '261')]
+     Text(0, 0, '142'),
+     Text(0, 0, '152'),
+     Text(0, 0, '176'),
+     Text(0, 0, '195'),
+     Text(0, 0, '229'),
+     Text(0, 0, '285')]
 
 
 
 
     
-![png](analysis_files/analysis_51_1.png)
+![png](analysis_files/analysis_53_1.png)
     
 
 
@@ -3882,7 +4734,7 @@ pd.DataFrame(counts.items(), columns=["Ranking", category]).set_index("Ranking")
 
 
     
-![png](analysis_files/analysis_52_0.png)
+![png](analysis_files/analysis_54_0.png)
     
 
 
@@ -4015,7 +4867,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_54_1.png)
+![png](analysis_files/analysis_56_1.png)
     
 
 
@@ -4066,7 +4918,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_55_1.png)
+![png](analysis_files/analysis_57_1.png)
     
 
 
@@ -4102,7 +4954,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_56_1.png)
+![png](analysis_files/analysis_58_1.png)
     
 
 
@@ -4155,7 +5007,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_57_1.png)
+![png](analysis_files/analysis_59_1.png)
     
 
 
@@ -4209,7 +5061,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_58_1.png)
+![png](analysis_files/analysis_60_1.png)
     
 
 
@@ -4248,7 +5100,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_59_1.png)
+![png](analysis_files/analysis_61_1.png)
     
 
 
@@ -4284,29 +5136,29 @@ results.loc[(results["Bronnen DB"] == ("wikikids.nl")) & (results["Ranking"] <= 
       <th>Titel resultaat</th>
       <th>Link/resultaat</th>
       <th>Query</th>
+      <th>Relevant?</th>
+      <th>vrije tags page</th>
       <th>Bronnen DB</th>
       <th>Bron: Inst/Bedrijf</th>
       <th>Toegankelijkheid doelgroep (indruk)</th>
-      <th>Relevant?</th>
-      <th>vrije tags page</th>
       <th>Soort Resultaat</th>
       <th>...</th>
-      <th>Bron: Vrije labels</th>
       <th>Bron: doel</th>
-      <th>Trackers</th>
+      <th>Bron: Trackers</th>
+      <th>OnderzoekNr</th>
+      <th>Ranking</th>
       <th>Related to Bronnen DB test (Resultaten DB)</th>
       <th>Bronnen: URL domein</th>
-      <th>OnderzoekNr</th>
       <th>Query: Video Schooltv</th>
       <th>Created by</th>
       <th>Bron-Status</th>
-      <th>Ranking</th>
+      <th>Bron: Onderwerp</th>
     </tr>
   </thead>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 26 columns</p>
+<p>0 rows × 27 columns</p>
 </div>
 
 
@@ -4331,13 +5183,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '1'), Text(0, 0, '12'), Text(0, 0, '23'), Text(0, 0, '26')]
+    [Text(0, 0, '1'), Text(0, 0, '11'), Text(0, 0, '23'), Text(0, 0, '27')]
 
 
 
 
     
-![png](analysis_files/analysis_61_1.png)
+![png](analysis_files/analysis_63_1.png)
     
 
 
@@ -4393,14 +5245,14 @@ counts
   <tbody>
     <tr>
       <th>De gouverneur van limburg</th>
-      <td>1.000000</td>
-      <td>NaN</td>
+      <td>0.900000</td>
+      <td>0.100000</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>De smurfen</th>
-      <td>0.500000</td>
-      <td>0.100000</td>
+      <td>0.200000</td>
+      <td>0.400000</td>
       <td>0.400000</td>
     </tr>
     <tr>
@@ -4478,46 +5330,46 @@ for col in counts.columns:
     ====================informatief====================
     Soort Resultaat                                     informatief  navigational  transactional
     Query                                                                                       
-    De gouverneur van limburg                              1.000000           NaN            NaN
-    welke stammen zijn er in sierra leone                  1.000000           NaN            NaN
-    wat is een foetus?                                     1.000000           NaN            NaN
-    elektronen                                             1.000000           NaN            NaN
-    wat is een begin aanhaling                             1.000000           NaN            NaN
+    mens red peuter van dak racist                         1.000000           NaN            NaN
+    wist je dat?                                           1.000000           NaN            NaN
+    waar leven giraffen                                    1.000000           NaN            NaN
     wat betekent schotse                                   1.000000           NaN            NaN
-    taak slokdarm                                          1.000000           NaN            NaN
-    waar komt de naam Romen van                            1.000000           NaN            NaN
-    hirohito                                               1.000000           NaN            NaN
+    wat is een begin aanhaling                             1.000000           NaN            NaN
+    elektronen                                             1.000000           NaN            NaN
     ik wil iemand een bericht steuren                      1.000000           NaN            NaN
+    wat is een foetus?                                     1.000000           NaN            NaN
     voortplanting                                          1.000000           NaN            NaN
+    wat is en ligboxstal                                   1.000000           NaN            NaN
+    welke stammen zijn er in sierra leone                  1.000000           NaN            NaN
     koning van belgieje                                    1.000000           NaN            NaN
     maanstonden                                            1.000000           NaN            NaN
-    marrons                                                1.000000           NaN            NaN
-    mens red peuter van dak racist                         1.000000           NaN            NaN
-    otter kenmerken                                        1.000000           NaN            NaN
-    pepernooten recept                                     1.000000           NaN            NaN
-    wat is en ligboxstal                                   1.000000           NaN            NaN
-    waar leven giraffen                                    1.000000           NaN            NaN
+    waar komt de naam Romen van                            1.000000           NaN            NaN
+    hirohito                                               1.000000           NaN            NaN
     Dierentuin                                             1.000000           NaN            NaN
-    wist je dat?                                           1.000000           NaN            NaN
+    otter kenmerken                                        1.000000           NaN            NaN
+    Waarom zijn edelmetalen geschrikt om geld te maken     1.000000           NaN            NaN
+    taak slokdarm                                          1.000000           NaN            NaN
+    pepernooten recept                                     1.000000           NaN            NaN
     Hoe komen straatkinderen aan eten                      1.000000           NaN            NaN
-    PIRAMIDES CHEOPS                                       1.000000           NaN            NaN
-    belangrijkste piramide                                 1.000000           NaN            NaN
     Rencontre                                              1.000000           NaN            NaN
+    PIRAMIDES CHEOPS                                       1.000000           NaN            NaN
+    kerstmis                                               0.909091      0.090909            NaN
+    nachtbraker vogel                                      0.900000      0.100000            NaN
     ...                                                         ...           ...            ...
-    seks                                                   0.500000      0.500000            NaN
     merelbeke                                              0.444444      0.555556            NaN
     rillaar monumenten                                     0.400000      0.600000            NaN
     handgranat                                             0.400000      0.400000       0.200000
     waterbuffel                                            0.400000           NaN       0.600000
-    azerty                                                 0.375000      0.250000       0.375000
     Rug                                                    0.375000      0.625000            NaN
+    azerty                                                 0.375000      0.250000       0.375000
     camille dhont                                          0.333333      0.555556       0.111111
     geld                                                   0.333333      0.444444       0.222222
-    middellandse zee                                       0.300000           NaN       0.700000
     ferrari                                                0.300000      0.200000       0.500000
     turne ritmic                                           0.250000      0.625000       0.125000
-    kleren van vikingen                                    0.200000           NaN       0.800000
     echte naakte vrouw                                     0.200000      0.800000            NaN
+    De smurfen                                             0.200000      0.400000       0.400000
+    middellandse zee                                       0.200000      0.200000       0.600000
+    kleren van vikingen                                    0.200000      0.100000       0.700000
     juf hanne de leerboom                                  0.111111      0.888889            NaN
     filters                                                0.100000           NaN       0.900000
     autosport                                              0.090909      0.909091            NaN
@@ -4527,90 +5379,90 @@ for col in counts.columns:
     post moter                                                  NaN      0.100000       0.900000
     stamboom  familie                                           NaN      1.000000            NaN
     telefoon                                                    NaN      0.100000       0.900000
-    vogels huisjes                                              NaN      0.090909       0.909091
+    vogels huisjes                                              NaN      0.181818       0.818182
     wat voor soort producten worden er gemaakt bij ...          NaN      0.100000       0.900000
     
     [100 rows x 3 columns]
     ========================================================================================================================
     ====================navigational====================
-    Soort Resultaat                        informatief  navigational  transactional
-    Query                                                                          
-    stamboom  familie                              NaN      1.000000            NaN
-    autosport                                 0.090909      0.909091            NaN
-    juf hanne de leerboom                     0.111111      0.888889            NaN
-    echte naakte vrouw                        0.200000      0.800000            NaN
-    Rug                                       0.375000      0.625000            NaN
-    turne ritmic                              0.250000      0.625000       0.125000
-    rillaar monumenten                        0.400000      0.600000            NaN
-    merelbeke                                 0.444444      0.555556            NaN
-    camille dhont                             0.333333      0.555556       0.111111
-    seks                                      0.500000      0.500000            NaN
-    geld                                      0.333333      0.444444       0.222222
-    spiere                                    0.600000      0.400000            NaN
-    handgranat                                0.400000      0.400000       0.200000
-    ronaldo                                   0.615385      0.384615            NaN
-    greta thunberg                            0.636364      0.363636            NaN
-    de gea                                    0.700000      0.300000            NaN
-    zebrahaai                                 0.600000      0.300000       0.100000
-    paard hond en wolf                        0.700000      0.300000            NaN
-    beweging                                  0.700000      0.300000            NaN
-    zebra                                     0.636364      0.272727       0.090909
-    kindermotors                                   NaN      0.272727       0.727273
-    azerty                                    0.375000      0.250000       0.375000
-    sloot                                     0.777778      0.222222            NaN
-    video van paarden                         0.800000      0.200000            NaN
-    plaatjes van vulkaan                           NaN      0.200000       0.800000
-    ...                                            ...           ...            ...
-    filters                                   0.100000           NaN       0.900000
-    hirohito                                  1.000000           NaN            NaN
-    hommels                                   0.900000           NaN       0.100000
-    ik wil iemand een bericht steuren         1.000000           NaN            NaN
-    keurmerk max                              0.800000           NaN       0.200000
-    kleren van vikingen                       0.200000           NaN       0.800000
-    koning van belgieje                       1.000000           NaN            NaN
-    maanstonden                               1.000000           NaN            NaN
-    marrons                                   1.000000           NaN            NaN
-    mens red peuter van dak racist            1.000000           NaN            NaN
-    middellandse zee                          0.300000           NaN       0.700000
-    otter kenmerken                           1.000000           NaN            NaN
-    pepernooten recept                        1.000000           NaN            NaN
-    taak slokdarm                             1.000000           NaN            NaN
-    varkentje                                 0.900000           NaN       0.100000
-    voortplanting                             1.000000           NaN            NaN
-    waar komt de naam Romen van               1.000000           NaN            NaN
-    waar leven giraffen                       1.000000           NaN            NaN
-    wat betekent schotse                      1.000000           NaN            NaN
-    wat is een begin aanhaling                1.000000           NaN            NaN
-    wat is een foetus?                        1.000000           NaN            NaN
-    wat is en ligboxstal                      1.000000           NaN            NaN
-    waterbuffel                               0.400000           NaN       0.600000
-    welke stammen zijn er in sierra leone     1.000000           NaN            NaN
-    wist je dat?                              1.000000           NaN            NaN
+    Soort Resultaat                                     informatief  navigational  transactional
+    Query                                                                                       
+    stamboom  familie                                           NaN      1.000000            NaN
+    autosport                                              0.090909      0.909091            NaN
+    juf hanne de leerboom                                  0.111111      0.888889            NaN
+    echte naakte vrouw                                     0.200000      0.800000            NaN
+    Rug                                                    0.375000      0.625000            NaN
+    turne ritmic                                           0.250000      0.625000       0.125000
+    rillaar monumenten                                     0.400000      0.600000            NaN
+    merelbeke                                              0.444444      0.555556            NaN
+    camille dhont                                          0.333333      0.555556       0.111111
+    seks                                                   0.500000      0.500000            NaN
+    ronaldo                                                0.538462      0.461538            NaN
+    geld                                                   0.333333      0.444444       0.222222
+    De smurfen                                             0.200000      0.400000       0.400000
+    handgranat                                             0.400000      0.400000       0.200000
+    spiere                                                 0.600000      0.400000            NaN
+    greta thunberg                                         0.636364      0.363636            NaN
+    de gea                                                 0.700000      0.300000            NaN
+    leven                                                  0.600000      0.300000       0.100000
+    zebrahaai                                              0.600000      0.300000       0.100000
+    paard hond en wolf                                     0.700000      0.300000            NaN
+    beweging                                               0.700000      0.300000            NaN
+    kindermotors                                                NaN      0.272727       0.727273
+    zebra                                                  0.636364      0.272727       0.090909
+    paris saint germain                                    0.500000      0.250000       0.250000
+    azerty                                                 0.375000      0.250000       0.375000
+    ...                                                         ...           ...            ...
+    Waarom zijn edelmetalen geschrikt om geld te maken     1.000000           NaN            NaN
+    een hond                                               0.800000           NaN       0.200000
+    elektronen                                             1.000000           NaN            NaN
+    filters                                                0.100000           NaN       0.900000
+    hirohito                                               1.000000           NaN            NaN
+    hommels                                                0.900000           NaN       0.100000
+    ik wil iemand een bericht steuren                      1.000000           NaN            NaN
+    keurmerk max                                           0.800000           NaN       0.200000
+    koning van belgieje                                    1.000000           NaN            NaN
+    maanstonden                                            1.000000           NaN            NaN
+    mens red peuter van dak racist                         1.000000           NaN            NaN
+    otter kenmerken                                        1.000000           NaN            NaN
+    pepernooten recept                                     1.000000           NaN            NaN
+    taak slokdarm                                          1.000000           NaN            NaN
+    varkentje                                              0.900000           NaN       0.100000
+    voortplanting                                          1.000000           NaN            NaN
+    waar komt de naam Romen van                            1.000000           NaN            NaN
+    waar leven giraffen                                    1.000000           NaN            NaN
+    wat betekent schotse                                   1.000000           NaN            NaN
+    wat is een begin aanhaling                             1.000000           NaN            NaN
+    wat is een foetus?                                     1.000000           NaN            NaN
+    wat is en ligboxstal                                   1.000000           NaN            NaN
+    waterbuffel                                            0.400000           NaN       0.600000
+    welke stammen zijn er in sierra leone                  1.000000           NaN            NaN
+    wist je dat?                                           1.000000           NaN            NaN
     
     [100 rows x 3 columns]
     ========================================================================================================================
     ====================transactional====================
     Soort Resultaat                                     informatief  navigational  transactional
     Query                                                                                       
-    vogels huisjes                                              NaN      0.090909       0.909091
     wat voor soort producten worden er gemaakt bij ...          NaN      0.100000       0.900000
     telefoon                                                    NaN      0.100000       0.900000
     post moter                                                  NaN      0.100000       0.900000
     filters                                                0.100000           NaN       0.900000
     klokken                                                     NaN      0.111111       0.888889
-    kleren van vikingen                                    0.200000           NaN       0.800000
+    vogels huisjes                                              NaN      0.181818       0.818182
     plaatjes van vulkaan                                        NaN      0.200000       0.800000
     kindermotors                                                NaN      0.272727       0.727273
-    middellandse zee                                       0.300000           NaN       0.700000
+    kleren van vikingen                                    0.200000      0.100000       0.700000
     waterbuffel                                            0.400000           NaN       0.600000
+    middellandse zee                                       0.200000      0.200000       0.600000
     ferrari                                                0.300000      0.200000       0.500000
-    De smurfen                                             0.500000      0.100000       0.400000
+    De smurfen                                             0.200000      0.400000       0.400000
     de bal                                                 0.500000      0.100000       0.400000
     cobra slang                                            0.500000      0.100000       0.400000
     azerty                                                 0.375000      0.250000       0.375000
     stoomschip                                             0.500000      0.200000       0.300000
     Ezel                                                   0.700000           NaN       0.300000
-    paris saint germain                                    0.625000      0.125000       0.250000
+    paris saint germain                                    0.500000      0.250000       0.250000
     geld                                                   0.333333      0.444444       0.222222
     keurmerk max                                           0.800000           NaN       0.200000
     handgranat                                             0.400000      0.400000       0.200000
@@ -4624,7 +5476,7 @@ for col in counts.columns:
     populairenamen                                         0.900000      0.100000            NaN
     puberteit                                              0.900000      0.100000            NaN
     rillaar monumenten                                     0.400000      0.600000            NaN
-    ronaldo                                                0.615385      0.384615            NaN
+    ronaldo                                                0.538462      0.461538            NaN
     seks                                                   0.500000      0.500000            NaN
     sloot                                                  0.777778      0.222222            NaN
     spiere                                                 0.600000      0.400000            NaN
@@ -4668,13 +5520,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '141'), Text(0, 0, '165'), Text(0, 0, '692')]
+    [Text(0, 0, '138'), Text(0, 0, '181'), Text(0, 0, '679')]
 
 
 
 
     
-![png](analysis_files/analysis_65_1.png)
+![png](analysis_files/analysis_67_1.png)
     
 
 
@@ -4707,7 +5559,7 @@ pd.DataFrame.from_dict(value_counts, orient="index").sort_index().plot(
 
 
     
-![png](analysis_files/analysis_66_0.png)
+![png](analysis_files/analysis_68_0.png)
     
 
 
@@ -4731,17 +5583,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '1'),
-     Text(0, 0, '2'),
-     Text(0, 0, '43'),
-     Text(0, 0, '120'),
-     Text(0, 0, '832')]
+    [Text(0, 0, '1'), Text(0, 0, '53'), Text(0, 0, '117'), Text(0, 0, '827')]
 
 
 
 
     
-![png](analysis_files/analysis_68_1.png)
+![png](analysis_files/analysis_70_1.png)
     
 
 
@@ -4767,7 +5615,7 @@ pd.DataFrame(counts.items(), columns=["Ranking", "Relevance"]).set_index(
 
 
     
-![png](analysis_files/analysis_69_0.png)
+![png](analysis_files/analysis_71_0.png)
     
 
 
@@ -4801,13 +5649,13 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 ).grid(axis="y")
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/1192633478.py:17: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/1192633478.py:17: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
       pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 
 
 
     
-![png](analysis_files/analysis_70_1.png)
+![png](analysis_files/analysis_72_1.png)
     
 
 
@@ -4832,16 +5680,16 @@ ax.bar_label(ax.containers[0])
 
 
     [Text(0, 0, '10'),
-     Text(0, 0, '57'),
-     Text(0, 0, '293'),
+     Text(0, 0, '55'),
+     Text(0, 0, '300'),
      Text(0, 0, '302'),
-     Text(0, 0, '336')]
+     Text(0, 0, '331')]
 
 
 
 
     
-![png](analysis_files/analysis_72_1.png)
+![png](analysis_files/analysis_74_1.png)
     
 
 
@@ -4849,6 +5697,8 @@ ax.bar_label(ax.containers[0])
 
 
 ```python
+n=10
+
 ax = (
     results_sources["Commercialiteit"]
     .str.split(",")
@@ -4857,7 +5707,7 @@ ax = (
     .value_counts(ascending=True)
     .plot(
         kind="barh",
-        title=f"Commerciality Labels per Result Page (out of {len(results_sources)}; multiple possible)",
+        title=f"Commerciality Labels for Top {n} Result Pages (out of {len(results_sources)})",
         xlabel="Number of Result pages",
         ylabel="Commerciality Label",
     )
@@ -4868,13 +5718,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '48'), Text(0, 0, '408'), Text(0, 0, '542')]
+    [Text(0, 0, '53'), Text(0, 0, '416'), Text(0, 0, '528')]
 
 
 
 
     
-![png](analysis_files/analysis_74_1.png)
+![png](analysis_files/analysis_76_1.png)
     
 
 
@@ -4891,7 +5741,7 @@ ax = (
     .value_counts(ascending=True)
     .plot(
         kind="barh",
-        title=f"Commerciality Labels for Top {n} Result Pages (out of {len(_results)}; multiple possible)",
+        title=f"Commerciality Labels for Top {n} Result Pages (out of {len(_results)})",
         xlabel="Number of Result pages",
         ylabel="Commerciality Label",
     )
@@ -4902,13 +5752,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '17'), Text(0, 0, '226'), Text(0, 0, '256')]
+    [Text(0, 0, '18'), Text(0, 0, '228'), Text(0, 0, '252')]
 
 
 
 
     
-![png](analysis_files/analysis_75_1.png)
+![png](analysis_files/analysis_77_1.png)
     
 
 
@@ -4925,7 +5775,7 @@ ax = (
     .value_counts(ascending=True)
     .plot(
         kind="barh",
-        title=f"Commerciality Labels for Top {n} Result Pages (out of {len(_results)}; multiple possible)",
+        title=f"Commerciality Labels for Top {n} Result Pages (out of {len(_results)})",
         xlabel="Number of Result pages",
         ylabel="Commerciality Label",
     )
@@ -4942,7 +5792,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_76_1.png)
+![png](analysis_files/analysis_78_1.png)
     
 
 
@@ -4976,7 +5826,7 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(0).sort_index().plot
 
 
     
-![png](analysis_files/analysis_77_0.png)
+![png](analysis_files/analysis_79_0.png)
     
 
 
@@ -5005,32 +5855,32 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '7'),
-     Text(0, 0, '8'),
+    [Text(0, 0, '9'),
      Text(0, 0, '11'),
-     Text(0, 0, '13'),
+     Text(0, 0, '12'),
      Text(0, 0, '13'),
      Text(0, 0, '15'),
      Text(0, 0, '18'),
      Text(0, 0, '18'),
      Text(0, 0, '21'),
-     Text(0, 0, '25'),
-     Text(0, 0, '25'),
+     Text(0, 0, '24'),
+     Text(0, 0, '24'),
      Text(0, 0, '33'),
      Text(0, 0, '35'),
      Text(0, 0, '37'),
      Text(0, 0, '38'),
-     Text(0, 0, '74'),
-     Text(0, 0, '75'),
+     Text(0, 0, '69'),
+     Text(0, 0, '76'),
+     Text(0, 0, '95'),
+     Text(0, 0, '106'),
      Text(0, 0, '140'),
-     Text(0, 0, '166'),
-     Text(0, 0, '200')]
+     Text(0, 0, '165')]
 
 
 
 
     
-![png](analysis_files/analysis_79_1.png)
+![png](analysis_files/analysis_81_1.png)
     
 
 
@@ -5059,30 +5909,30 @@ ax.bar_label(ax.containers[0])
 
     [Text(0, 0, '4'),
      Text(0, 0, '4'),
-     Text(0, 0, '4'),
      Text(0, 0, '5'),
      Text(0, 0, '5'),
      Text(0, 0, '7'),
      Text(0, 0, '7'),
-     Text(0, 0, '9'),
+     Text(0, 0, '8'),
      Text(0, 0, '9'),
      Text(0, 0, '10'),
-     Text(0, 0, '12'),
+     Text(0, 0, '11'),
      Text(0, 0, '16'),
      Text(0, 0, '16'),
      Text(0, 0, '17'),
      Text(0, 0, '19'),
      Text(0, 0, '31'),
      Text(0, 0, '31'),
+     Text(0, 0, '40'),
+     Text(0, 0, '63'),
      Text(0, 0, '72'),
-     Text(0, 0, '103'),
      Text(0, 0, '106')]
 
 
 
 
     
-![png](analysis_files/analysis_80_1.png)
+![png](analysis_files/analysis_82_1.png)
     
 
 
@@ -5123,16 +5973,17 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '2'),
      Text(0, 0, '3'),
      Text(0, 0, '4'),
+     Text(0, 0, '5'),
      Text(0, 0, '7'),
+     Text(0, 0, '10'),
      Text(0, 0, '12'),
-     Text(0, 0, '15'),
      Text(0, 0, '41')]
 
 
 
 
     
-![png](analysis_files/analysis_81_1.png)
+![png](analysis_files/analysis_83_1.png)
     
 
 
@@ -5168,13 +6019,13 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 ).grid(axis="y")
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/978984602.py:19: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/978984602.py:19: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
       pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 
 
 
     
-![png](analysis_files/analysis_82_1.png)
+![png](analysis_files/analysis_84_1.png)
     
 
 
@@ -5203,13 +6054,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '29'), Text(0, 0, '236'), Text(0, 0, '352'), Text(0, 0, '381')]
+    [Text(0, 0, '25'), Text(0, 0, '232'), Text(0, 0, '359'), Text(0, 0, '381')]
 
 
 
 
     
-![png](analysis_files/analysis_84_1.png)
+![png](analysis_files/analysis_86_1.png)
     
 
 
@@ -5237,13 +6088,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '8'), Text(0, 0, '101'), Text(0, 0, '176'), Text(0, 0, '214')]
+    [Text(0, 0, '7'), Text(0, 0, '99'), Text(0, 0, '178'), Text(0, 0, '214')]
 
 
 
 
     
-![png](analysis_files/analysis_85_1.png)
+![png](analysis_files/analysis_87_1.png)
     
 
 
@@ -5271,13 +6122,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '1'), Text(0, 0, '12'), Text(0, 0, '26'), Text(0, 0, '60')]
+    [Text(0, 0, '1'), Text(0, 0, '11'), Text(0, 0, '27'), Text(0, 0, '60')]
 
 
 
 
     
-![png](analysis_files/analysis_86_1.png)
+![png](analysis_files/analysis_88_1.png)
     
 
 
@@ -5312,7 +6163,7 @@ pd.DataFrame.from_dict(value_counts, orient="index").sort_index().plot(
 
 
     
-![png](analysis_files/analysis_87_0.png)
+![png](analysis_files/analysis_89_0.png)
     
 
 
@@ -5342,32 +6193,32 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '15'),
-     Text(0, 0, '18'),
+    [Text(0, 0, '20'),
      Text(0, 0, '20'),
      Text(0, 0, '20'),
-     Text(0, 0, '20'),
-     Text(0, 0, '21'),
+     Text(0, 0, '22'),
+     Text(0, 0, '22'),
      Text(0, 0, '25'),
-     Text(0, 0, '25'),
-     Text(0, 0, '29'),
+     Text(0, 0, '26'),
+     Text(0, 0, '27'),
+     Text(0, 0, '28'),
      Text(0, 0, '29'),
      Text(0, 0, '32'),
-     Text(0, 0, '33'),
-     Text(0, 0, '41'),
-     Text(0, 0, '61'),
+     Text(0, 0, '34'),
+     Text(0, 0, '37'),
+     Text(0, 0, '48'),
+     Text(0, 0, '60'),
      Text(0, 0, '63'),
-     Text(0, 0, '64'),
-     Text(0, 0, '93'),
-     Text(0, 0, '100'),
+     Text(0, 0, '94'),
+     Text(0, 0, '110'),
      Text(0, 0, '111'),
-     Text(0, 0, '241')]
+     Text(0, 0, '216')]
 
 
 
 
     
-![png](analysis_files/analysis_89_1.png)
+![png](analysis_files/analysis_91_1.png)
     
 
 
@@ -5395,32 +6246,32 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '7'),
-     Text(0, 0, '7'),
+    [Text(0, 0, '8'),
      Text(0, 0, '8'),
-     Text(0, 0, '8'),
-     Text(0, 0, '9'),
      Text(0, 0, '10'),
      Text(0, 0, '10'),
+     Text(0, 0, '10'),
+     Text(0, 0, '13'),
      Text(0, 0, '14'),
      Text(0, 0, '14'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
-     Text(0, 0, '17'),
-     Text(0, 0, '25'),
-     Text(0, 0, '26'),
+     Text(0, 0, '16'),
+     Text(0, 0, '16'),
+     Text(0, 0, '20'),
+     Text(0, 0, '24'),
      Text(0, 0, '28'),
-     Text(0, 0, '38'),
-     Text(0, 0, '45'),
+     Text(0, 0, '39'),
+     Text(0, 0, '49'),
      Text(0, 0, '89'),
-     Text(0, 0, '124')]
+     Text(0, 0, '112')]
 
 
 
 
     
-![png](analysis_files/analysis_90_1.png)
+![png](analysis_files/analysis_92_1.png)
     
 
 
@@ -5461,12 +6312,12 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '2'),
      Text(0, 0, '2'),
      Text(0, 0, '2'),
-     Text(0, 0, '2'),
+     Text(0, 0, '3'),
      Text(0, 0, '3'),
      Text(0, 0, '4'),
      Text(0, 0, '4'),
      Text(0, 0, '6'),
-     Text(0, 0, '6'),
+     Text(0, 0, '7'),
      Text(0, 0, '9'),
      Text(0, 0, '17'),
      Text(0, 0, '37')]
@@ -5475,7 +6326,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_91_1.png)
+![png](analysis_files/analysis_93_1.png)
     
 
 
@@ -5509,7 +6360,7 @@ pd.DataFrame(counts.items(), columns=["Ranking", "Thumbs Up"]).set_index(
 
 
     
-![png](analysis_files/analysis_92_0.png)
+![png](analysis_files/analysis_94_0.png)
     
 
 
@@ -5545,14 +6396,14 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '27'),
      Text(0, 0, '53'),
      Text(0, 0, '125'),
-     Text(0, 0, '332'),
+     Text(0, 0, '331'),
      Text(0, 0, '423')]
 
 
 
 
     
-![png](analysis_files/analysis_94_1.png)
+![png](analysis_files/analysis_96_1.png)
     
 
 
@@ -5605,7 +6456,7 @@ ax.bar_label(ax.containers[0])
 
     [Text(0, 0, '39'),
      Text(0, 0, '76'),
-     Text(0, 0, '200'),
+     Text(0, 0, '199'),
      Text(0, 0, '357'),
      Text(0, 0, '389')]
 
@@ -5613,7 +6464,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_97_1.png)
+![png](analysis_files/analysis_99_1.png)
     
 
 
@@ -5648,13 +6499,13 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 ).grid(axis="y")
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/331480954.py:18: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/331480954.py:18: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
       pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 
 
 
     
-![png](analysis_files/analysis_98_1.png)
+![png](analysis_files/analysis_100_1.png)
     
 
 
@@ -5684,19 +6535,19 @@ ax.bar_label(ax.containers[0])
 
 
     [Text(0, 0, '1'),
-     Text(0, 0, '10'),
+     Text(0, 0, '9'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '32'),
-     Text(0, 0, '114'),
-     Text(0, 0, '169'),
+     Text(0, 0, '113'),
+     Text(0, 0, '168'),
      Text(0, 0, '196')]
 
 
 
 
     
-![png](analysis_files/analysis_99_1.png)
+![png](analysis_files/analysis_101_1.png)
     
 
 
@@ -5738,7 +6589,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_100_1.png)
+![png](analysis_files/analysis_102_1.png)
     
 
 
@@ -5770,7 +6621,7 @@ pd.DataFrame(counts.items(), columns=["Ranking", category]).set_index("Ranking")
 
 
     
-![png](analysis_files/analysis_101_0.png)
+![png](analysis_files/analysis_103_0.png)
     
 
 
@@ -5799,13 +6650,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '15'), Text(0, 0, '191'), Text(0, 0, '336')]
+    [Text(0, 0, '17'), Text(0, 0, '197'), Text(0, 0, '328')]
 
 
 
 
     
-![png](analysis_files/analysis_104_1.png)
+![png](analysis_files/analysis_106_1.png)
     
 
 
@@ -5842,30 +6693,31 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '4'),
      Text(0, 0, '5'),
      Text(0, 0, '5'),
+     Text(0, 0, '5'),
      Text(0, 0, '6'),
-     Text(0, 0, '6'),
+     Text(0, 0, '7'),
      Text(0, 0, '8'),
      Text(0, 0, '8'),
-     Text(0, 0, '8'),
+     Text(0, 0, '9'),
      Text(0, 0, '10'),
      Text(0, 0, '13'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
      Text(0, 0, '16'),
-     Text(0, 0, '20'),
+     Text(0, 0, '19'),
      Text(0, 0, '21'),
      Text(0, 0, '23'),
      Text(0, 0, '32'),
      Text(0, 0, '35'),
-     Text(0, 0, '55'),
-     Text(0, 0, '73'),
-     Text(0, 0, '145')]
+     Text(0, 0, '56'),
+     Text(0, 0, '67'),
+     Text(0, 0, '144')]
 
 
 
 
     
-![png](analysis_files/analysis_106_1.png)
+![png](analysis_files/analysis_108_1.png)
     
 
 
@@ -5898,7 +6750,8 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '1'),
      Text(0, 0, '1'),
      Text(0, 0, '1'),
-     Text(0, 0, '2'),
+     Text(0, 0, '1'),
+     Text(0, 0, '1'),
      Text(0, 0, '2'),
      Text(0, 0, '2'),
      Text(0, 0, '2'),
@@ -5915,20 +6768,19 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '5'),
      Text(0, 0, '7'),
      Text(0, 0, '7'),
-     Text(0, 0, '7'),
      Text(0, 0, '8'),
+     Text(0, 0, '8'),
+     Text(0, 0, '9'),
      Text(0, 0, '9'),
      Text(0, 0, '10'),
      Text(0, 0, '10'),
      Text(0, 0, '10'),
-     Text(0, 0, '11'),
      Text(0, 0, '11'),
      Text(0, 0, '12'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
-     Text(0, 0, '15'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
      Text(0, 0, '16'),
@@ -5938,18 +6790,20 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '17'),
      Text(0, 0, '19'),
      Text(0, 0, '20'),
+     Text(0, 0, '23'),
      Text(0, 0, '24'),
+     Text(0, 0, '25'),
      Text(0, 0, '26'),
      Text(0, 0, '26'),
      Text(0, 0, '29'),
-     Text(0, 0, '30'),
+     Text(0, 0, '29'),
      Text(0, 0, '40'),
      Text(0, 0, '41'),
      Text(0, 0, '45'),
-     Text(0, 0, '53'),
-     Text(0, 0, '87'),
-     Text(0, 0, '99'),
-     Text(0, 0, '116'),
+     Text(0, 0, '54'),
+     Text(0, 0, '100'),
+     Text(0, 0, '106'),
+     Text(0, 0, '118'),
      Text(0, 0, '137'),
      Text(0, 0, '179')]
 
@@ -5957,7 +6811,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_108_1.png)
+![png](analysis_files/analysis_110_1.png)
     
 
 
@@ -5984,7 +6838,7 @@ sources["uBlocked trackers"].plot(
 
 
     
-![png](analysis_files/analysis_110_1.png)
+![png](analysis_files/analysis_112_1.png)
     
 
 
@@ -6013,7 +6867,7 @@ ax.bar_label(ax.containers[0])
 
 
     [Text(0, 0, '18'),
-     Text(0, 0, '287'),
+     Text(0, 0, '288'),
      Text(0, 0, '43'),
      Text(0, 0, '57'),
      Text(0, 0, '162'),
@@ -6025,7 +6879,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_112_1.png)
+![png](analysis_files/analysis_114_1.png)
     
 
 
@@ -6062,41 +6916,37 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '3'),
      Text(0, 0, '4'),
      Text(0, 0, '4'),
-     Text(0, 0, '4'),
-     Text(0, 0, '5'),
-     Text(0, 0, '5'),
-     Text(0, 0, '5'),
+     Text(0, 0, '6'),
      Text(0, 0, '7'),
      Text(0, 0, '8'),
      Text(0, 0, '8'),
      Text(0, 0, '8'),
-     Text(0, 0, '8'),
      Text(0, 0, '9'),
      Text(0, 0, '9'),
+     Text(0, 0, '11'),
      Text(0, 0, '12'),
      Text(0, 0, '12'),
-     Text(0, 0, '12'),
-     Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '13'),
      Text(0, 0, '14'),
+     Text(0, 0, '14'),
+     Text(0, 0, '14'),
      Text(0, 0, '15'),
      Text(0, 0, '15'),
-     Text(0, 0, '15'),
-     Text(0, 0, '17'),
+     Text(0, 0, '18'),
      Text(0, 0, '25'),
-     Text(0, 0, '33'),
+     Text(0, 0, '38'),
      Text(0, 0, '54'),
      Text(0, 0, '56'),
-     Text(0, 0, '63'),
-     Text(0, 0, '83'),
-     Text(0, 0, '85')]
+     Text(0, 0, '64'),
+     Text(0, 0, '82'),
+     Text(0, 0, '94')]
 
 
 
 
     
-![png](analysis_files/analysis_114_1.png)
+![png](analysis_files/analysis_116_1.png)
     
 
 
@@ -6120,13 +6970,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '20'), Text(0, 0, '166'), Text(0, 0, '176'), Text(0, 0, '180')]
+    [Text(0, 0, '19'), Text(0, 0, '166'), Text(0, 0, '176'), Text(0, 0, '181')]
 
 
 
 
     
-![png](analysis_files/analysis_116_1.png)
+![png](analysis_files/analysis_118_1.png)
     
 
 
@@ -6162,7 +7012,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_118_1.png)
+![png](analysis_files/analysis_120_1.png)
     
 
 
@@ -6199,15 +7049,15 @@ doelgroep_po
     <tr style="text-align: right;">
       <th></th>
       <th>URL Domein</th>
-      <th>Onderwerpen</th>
+      <th>Conclusie over doel vd bron</th>
+      <th>Thumbs up 8-14?</th>
       <th>Sector</th>
       <th>Reclame</th>
+      <th>Vrije labels bron/onderwerp</th>
       <th>uBlocked trackers</th>
       <th>Commercialiteit</th>
+      <th>Onderwerpen</th>
       <th>Div Labels NGO</th>
-      <th>Conclusie over doel vd bron</th>
-      <th>Vrije labels bron/onderwerp</th>
-      <th>Thumbs up 8-14?</th>
       <th>...</th>
       <th>Created time</th>
       <th>Created by</th>
@@ -6249,15 +7099,15 @@ doelgroep_po
     <tr>
       <th>canonvannederland.nl</th>
       <td>https://www.canonvannederland.nl/</td>
-      <td>geschiedenis</td>
+      <td>kwaliteitsinfo-onderwijs (gratis)</td>
+      <td>Ja</td>
       <td>Musea en archieven</td>
       <td>none</td>
+      <td>doelgroep PO/8-12, doelgroep VO/12+, informati...</td>
       <td>4</td>
       <td>not_for_profit</td>
+      <td>geschiedenis</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>doelgroep PO/8-12, doelgroep VO/12+, informati...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>November 3, 2023 10:10 PM</td>
       <td>Maarten Sprenger</td>
@@ -6273,15 +7123,15 @@ doelgroep_po
     <tr>
       <th>dierenwiki.nl</th>
       <td>https://dierenwiki.nl/</td>
-      <td>dieren</td>
-      <td>Internetbedrijven</td>
+      <td>aggregator/contenfarm</td>
+      <td>Nee</td>
+      <td>Online-bedrijven</td>
       <td>many_ads</td>
+      <td>about-voorbeeld, doelgroep PO/8-12, doelgroep ...</td>
       <td>3</td>
       <td>commercieel</td>
+      <td>dieren</td>
       <td>NaN</td>
-      <td>aggregator/contenfarm</td>
-      <td>about-voorbeeld, aggregator/contentfarm, doelg...</td>
-      <td>Nee</td>
       <td>...</td>
       <td>November 4, 2023 5:08 PM</td>
       <td>Maarten Sprenger</td>
@@ -6297,15 +7147,15 @@ doelgroep_po
     <tr>
       <th>dierpedia.nl</th>
       <td>https://dierpedia.nl/</td>
-      <td>dieren</td>
-      <td>Internetbedrijven</td>
+      <td>aggregator/contenfarm, informatieproduct div. ...</td>
+      <td>Nee</td>
+      <td>Online-bedrijven</td>
       <td>limited_ads</td>
+      <td>about-voorbeeld, doelgroep PO/8-12, doelgroep ...</td>
       <td>7</td>
       <td>commercieel</td>
+      <td>dieren</td>
       <td>NaN</td>
-      <td>aggregator/contenfarm, div. commercieel inform...</td>
-      <td>about-voorbeeld, aggregator/contentfarm, doelg...</td>
-      <td>Nee</td>
       <td>...</td>
       <td>November 4, 2023 5:05 PM</td>
       <td>Maarten Sprenger</td>
@@ -6321,15 +7171,15 @@ doelgroep_po
     <tr>
       <th>docukit.nl</th>
       <td>https://www.docukit.nl/</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>company_promotion</td>
+      <td>bedrijfsinfo/uithangbord, doelgroep PO/8-12, i...</td>
       <td>1</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>bedrijfsinfo/uithangbord, doelgroep PO/8-12, i...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>August 25, 2023 9:31 AM</td>
       <td>Maarten Sprenger</td>
@@ -6345,15 +7195,15 @@ doelgroep_po
     <tr>
       <th>natgeojunior.nl</th>
       <td>https://www.natgeojunior.nl</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>company_promotion</td>
+      <td>doelgroep PO/8-12, promotioneel, webshop</td>
       <td>2</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>doelgroep PO/8-12, promotioneel, webshop</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>January 12, 2024 6:38 PM</td>
       <td>Maarten Sprenger</td>
@@ -6369,15 +7219,15 @@ doelgroep_po
     <tr>
       <th>rangerclub.be</th>
       <td>https://rangerclub.be</td>
-      <td>dieren, natuur</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>company_promotion</td>
+      <td>doelgroep PO/8-12, promotioneel</td>
       <td>5</td>
       <td>not_for_profit</td>
+      <td>dieren, natuur</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>doelgroep PO/8-12, promotioneel</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 13, 2024 11:56 AM</td>
       <td>Maarten Sprenger</td>
@@ -6393,15 +7243,15 @@ doelgroep_po
     <tr>
       <th>rangers.wwf.nl</th>
       <td>https://rangers.wwf.nl/</td>
-      <td>dieren, natuur</td>
+      <td>informatie in het kader van goed doel, kwalite...</td>
+      <td>Ja</td>
       <td>NGO/Goede doelen site</td>
       <td>company_promotion</td>
+      <td>(product)informatie ihkv verkoop/bezoek, doelg...</td>
       <td>3</td>
       <td>not_for_profit</td>
+      <td>dieren, natuur</td>
       <td>ANBI, CBF</td>
-      <td>informatie in het kader van goed doel, kwalite...</td>
-      <td>(product)informatie ihkv verkoop/bezoek, doelg...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 13, 2024 3:40 PM</td>
       <td>Maarten Sprenger</td>
@@ -6417,15 +7267,15 @@ doelgroep_po
     <tr>
       <th>schoolsupport.nl</th>
       <td>https://schoolsupport.nl</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>company_promotion</td>
+      <td>bedrijfsinfo/uithangbord, doelgroep PO/8-12, k...</td>
       <td>3</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>bedrijfsinfo/uithangbord, doelgroep PO/8-12, k...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>January 2, 2024 4:34 PM</td>
       <td>Maarten Sprenger</td>
@@ -6441,15 +7291,15 @@ doelgroep_po
     <tr>
       <th>schooltv.nl</th>
       <td>https://schooltv.nl/</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo voor 8-18, publiek_mediaplatfor...</td>
+      <td>Ja</td>
       <td>Publieke_omroep</td>
       <td>none</td>
+      <td>doelgroep PO/8-12, doelgroep VO/12+, edutainme...</td>
       <td>12</td>
       <td>not_for_profit</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren, publ...</td>
-      <td>doelgroep PO/8-12, doelgroep VO/12+, edutainme...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 6, 2023 10:21 AM</td>
       <td>Maarten Sprenger</td>
@@ -6465,15 +7315,15 @@ doelgroep_po
     <tr>
       <th>superspreekbeurt.nl</th>
       <td>https://superspreekbeurt.nl</td>
-      <td>NaN</td>
-      <td>Internetbedrijven</td>
+      <td>aggregator/contenfarm</td>
+      <td>Nee</td>
+      <td>Online-bedrijven</td>
       <td>over_the_top_ads</td>
+      <td>doelgroep PO/8-12, link/reclamevehikel, oud/ve...</td>
       <td>8</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>aggregator/contenfarm, reclamevehikel</td>
-      <td>doelgroep PO/8-12, oud/verouderd, reclamevehik...</td>
-      <td>Nee</td>
+      <td>NaN</td>
       <td>...</td>
       <td>January 15, 2024 11:52 AM</td>
       <td>Maarten Sprenger</td>
@@ -6489,15 +7339,15 @@ doelgroep_po
     <tr>
       <th>taal-oefenen.nl</th>
       <td>https://www.taal-oefenen.nl</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo-onderwijs (gratis), onderwijsco...</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>company_promotion</td>
+      <td>doelgroep PO/8-12, informatie_primair_doel, lo...</td>
       <td>3</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>div. commercieel informatieproducten, kwalitei...</td>
-      <td>doelgroep PO/8-12, log_in (geheel/gedeeltelijk...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>December 14, 2023 7:13 PM</td>
       <td>Maarten Sprenger</td>
@@ -6513,15 +7363,15 @@ doelgroep_po
     <tr>
       <th>weetwatjeviert.nl</th>
       <td>https://weetwatjeviert.nl/</td>
-      <td>NaN</td>
+      <td>kennisbank/centrum +, kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Musea en archieven</td>
       <td>none</td>
+      <td>doelgroep PO/8-12, informatie_primair_doel, sa...</td>
       <td>1</td>
       <td>not_for_profit</td>
       <td>NaN</td>
-      <td>kennisbank/centrum +, kwaliteitscontent voor k...</td>
-      <td>doelgroep PO/8-12, informatie_primair_doel, sa...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>January 13, 2024 12:42 PM</td>
       <td>Maarten Sprenger</td>
@@ -6537,15 +7387,15 @@ doelgroep_po
     <tr>
       <th>wikikids.nl</th>
       <td>https://wikikids.nl/</td>
-      <td>NaN</td>
+      <td>gebruikersplatform geen kwaliteitsgarantie non...</td>
+      <td>Nee</td>
       <td>Amateur/vrijwilligersverenigingen</td>
       <td>none</td>
+      <td>community, doelgroep PO/8-12, informatie_prima...</td>
       <td>4</td>
       <td>not_for_profit</td>
       <td>NaN</td>
-      <td>comm. gebruikersplatform zonder kwaliteitsgara...</td>
-      <td>community, doelgroep PO/8-12, informatie_prima...</td>
-      <td>Nee</td>
+      <td>NaN</td>
       <td>...</td>
       <td>August 24, 2023 2:05 PM</td>
       <td>Maarten Sprenger</td>
@@ -6561,15 +7411,15 @@ doelgroep_po
     <tr>
       <th>wildvanfreek.nl</th>
       <td>https://www.wildvanfreek.nl</td>
-      <td>dieren</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>company_promotion</td>
+      <td>doelgroep PO/8-12, webshop</td>
       <td>5</td>
       <td>commercieel</td>
+      <td>dieren</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>doelgroep PO/8-12, webshop</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 2, 2024 3:00 PM</td>
       <td>Maarten Sprenger</td>
@@ -6585,15 +7435,15 @@ doelgroep_po
     <tr>
       <th>willemwever.kro-ncrv.nl</th>
       <td>https://willemwever.kro-ncrv.nl/</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo voor 8-18, publiek_mediaplatfor...</td>
+      <td>Ja</td>
       <td>Publieke_omroep</td>
       <td>none</td>
+      <td>doelgroep PO/8-12, edutainment, infinite_scrol...</td>
       <td>4</td>
       <td>not_for_profit</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren, publ...</td>
-      <td>doelgroep PO/8-12, edutainment, infinite_scrol...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 6, 2023 10:21 AM</td>
       <td>Maarten Sprenger</td>
@@ -6609,15 +7459,15 @@ doelgroep_po
     <tr>
       <th>youtube.com/@VarkentjeRundje</th>
       <td>https://www.youtube.com/@VarkentjeRundje/</td>
-      <td>NaN</td>
+      <td>entertainment</td>
+      <td>Just-in-case</td>
       <td>Publieke_omroep</td>
       <td>limited_ads</td>
+      <td>BigTech, doelgroep PO/8-12, entertainment, inf...</td>
       <td>25</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>entertainment</td>
-      <td>BigTech, doelgroep PO/8-12, entertainment, inf...</td>
-      <td>Nee</td>
+      <td>NaN</td>
       <td>...</td>
       <td>February 26, 2024 2:58 PM</td>
       <td>Maarten Sprenger</td>
@@ -6668,15 +7518,15 @@ doelgroep_vo
     <tr style="text-align: right;">
       <th></th>
       <th>URL Domein</th>
-      <th>Onderwerpen</th>
+      <th>Conclusie over doel vd bron</th>
+      <th>Thumbs up 8-14?</th>
       <th>Sector</th>
       <th>Reclame</th>
+      <th>Vrije labels bron/onderwerp</th>
       <th>uBlocked trackers</th>
       <th>Commercialiteit</th>
+      <th>Onderwerpen</th>
       <th>Div Labels NGO</th>
-      <th>Conclusie over doel vd bron</th>
-      <th>Vrije labels bron/onderwerp</th>
-      <th>Thumbs up 8-14?</th>
       <th>...</th>
       <th>Created time</th>
       <th>Created by</th>
@@ -6718,15 +7568,15 @@ doelgroep_vo
     <tr>
       <th>aljevragen.nl</th>
       <td>https://www.aljevragen.nl</td>
-      <td>NaN</td>
+      <td>informatieproduct div. commercieel</td>
+      <td>Just-in-case</td>
       <td>Leraren/Docenten</td>
       <td>limited_ads</td>
+      <td>doelgroep VO/12+, onderwijscontent</td>
       <td>7</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>persoonlijke onderwijscontent</td>
-      <td>doelgroep VO/12+, onderwijscontent</td>
-      <td>Just-in-case</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 4, 2023 3:28 PM</td>
       <td>Maarten Sprenger</td>
@@ -6742,15 +7592,15 @@ doelgroep_vo
     <tr>
       <th>allesoverseks.be</th>
       <td>https://www.allesoverseks.be/</td>
-      <td>lichaam</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Overheid (of i.o.v.)</td>
       <td>none</td>
+      <td>doelgroep VO/12+, informatie_primair_doel, ove...</td>
       <td>3</td>
       <td>not_for_profit</td>
+      <td>lichaam</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>doelgroep VO/12+, informatie_primair_doel, ove...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 7, 2024 4:48 PM</td>
       <td>Maarten Sprenger</td>
@@ -6766,15 +7616,15 @@ doelgroep_vo
     <tr>
       <th>biologielessen.nl</th>
       <td>https://biologielessen.nl/</td>
-      <td>lichaam</td>
+      <td>kwaliteitsinfo-onderwijs (gratis)</td>
+      <td>Ja</td>
       <td>Leraren/Docenten</td>
       <td>none</td>
+      <td>doelgroep VO/12+, informatie_primair_doel, ken...</td>
       <td>1</td>
       <td>not_for_profit</td>
+      <td>lichaam</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>doelgroep VO/12+, informatie_primair_doel, ken...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>November 6, 2023 10:22 AM</td>
       <td>Maarten Sprenger</td>
@@ -6790,15 +7640,15 @@ doelgroep_vo
     <tr>
       <th>canonvannederland.nl</th>
       <td>https://www.canonvannederland.nl/</td>
-      <td>geschiedenis</td>
+      <td>kwaliteitsinfo-onderwijs (gratis)</td>
+      <td>Ja</td>
       <td>Musea en archieven</td>
       <td>none</td>
+      <td>doelgroep PO/8-12, doelgroep VO/12+, informati...</td>
       <td>4</td>
       <td>not_for_profit</td>
+      <td>geschiedenis</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>doelgroep PO/8-12, doelgroep VO/12+, informati...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>November 3, 2023 10:10 PM</td>
       <td>Maarten Sprenger</td>
@@ -6814,15 +7664,15 @@ doelgroep_vo
     <tr>
       <th>cyberpoli.nl</th>
       <td>https://www.cyberpoli.nl/</td>
-      <td>gezondheid, lichaam</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Onafhankelijk Kennis- en adviescentrum</td>
       <td>none</td>
+      <td>about-voorbeeld, doelgroep VO/12+, kennisbank/...</td>
       <td>4</td>
       <td>not_for_profit</td>
+      <td>gezondheid, lichaam</td>
       <td>ANBI, CBF</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>about-voorbeeld, doelgroep VO/12+, kennisbank/...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>November 6, 2023 10:03 AM</td>
       <td>Maarten Sprenger</td>
@@ -6838,15 +7688,15 @@ doelgroep_vo
     <tr>
       <th>dierenwiki.nl</th>
       <td>https://dierenwiki.nl/</td>
-      <td>dieren</td>
-      <td>Internetbedrijven</td>
+      <td>aggregator/contenfarm</td>
+      <td>Nee</td>
+      <td>Online-bedrijven</td>
       <td>many_ads</td>
+      <td>about-voorbeeld, doelgroep PO/8-12, doelgroep ...</td>
       <td>3</td>
       <td>commercieel</td>
+      <td>dieren</td>
       <td>NaN</td>
-      <td>aggregator/contenfarm</td>
-      <td>about-voorbeeld, aggregator/contentfarm, doelg...</td>
-      <td>Nee</td>
       <td>...</td>
       <td>November 4, 2023 5:08 PM</td>
       <td>Maarten Sprenger</td>
@@ -6862,15 +7712,15 @@ doelgroep_vo
     <tr>
       <th>dierpedia.nl</th>
       <td>https://dierpedia.nl/</td>
-      <td>dieren</td>
-      <td>Internetbedrijven</td>
+      <td>aggregator/contenfarm, informatieproduct div. ...</td>
+      <td>Nee</td>
+      <td>Online-bedrijven</td>
       <td>limited_ads</td>
+      <td>about-voorbeeld, doelgroep PO/8-12, doelgroep ...</td>
       <td>7</td>
       <td>commercieel</td>
+      <td>dieren</td>
       <td>NaN</td>
-      <td>aggregator/contenfarm, div. commercieel inform...</td>
-      <td>about-voorbeeld, aggregator/contentfarm, doelg...</td>
-      <td>Nee</td>
       <td>...</td>
       <td>November 4, 2023 5:05 PM</td>
       <td>Maarten Sprenger</td>
@@ -6886,15 +7736,15 @@ doelgroep_vo
     <tr>
       <th>examenoverzicht.nl</th>
       <td>https://www.examenoverzicht.nl/</td>
-      <td>NaN</td>
-      <td>Internetbedrijven</td>
+      <td>onderwijscontent (betaald)</td>
+      <td>Just-in-case</td>
+      <td>Online-bedrijven</td>
       <td>company_promotion</td>
+      <td>bedrijfsinfo/uithangbord, doelgroep VO/12+, pr...</td>
       <td>3</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>onderwijscontent (betaald)</td>
-      <td>bedrijfsinfo/uithangbord, doelgroep VO/12+, pr...</td>
-      <td>Just-in-case</td>
+      <td>NaN</td>
       <td>...</td>
       <td>December 14, 2023 2:25 PM</td>
       <td>Maarten Sprenger</td>
@@ -6910,15 +7760,15 @@ doelgroep_vo
     <tr>
       <th>jouwggd.nl</th>
       <td>https://www.jouwggd.nl/</td>
-      <td>gezondheid, lichaam</td>
+      <td>kwaliteitsinfo-gezondheidsorganisaties</td>
+      <td>Ja</td>
       <td>Federatieve instelling/unie</td>
       <td>none</td>
+      <td>doelgroep VO/12+, informatie_primair_doel, ken...</td>
       <td>1</td>
       <td>not_for_profit</td>
+      <td>gezondheid, lichaam</td>
       <td>NaN</td>
-      <td>kwaliteitscontent-gezondheidsorganisaties</td>
-      <td>doelgroep VO/12+, informatie_primair_doel, ken...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 7, 2024 4:49 PM</td>
       <td>Maarten Sprenger</td>
@@ -6934,15 +7784,15 @@ doelgroep_vo
     <tr>
       <th>mlochemie.nl</th>
       <td>https://www.mlochemie.nl</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo-onderwijs (gratis)</td>
+      <td>Ja</td>
       <td>Uitgevers (educatief/literair)</td>
       <td>none</td>
+      <td>doelgroep VO/12+, informatie_primair_doel, ond...</td>
       <td>1</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>doelgroep VO/12+, informatie_primair_doel, ond...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 4, 2023 3:18 PM</td>
       <td>Maarten Sprenger</td>
@@ -6958,15 +7808,15 @@ doelgroep_vo
     <tr>
       <th>mrchadd.nl</th>
       <td>https://www.mrchadd.nl/</td>
-      <td>NaN</td>
-      <td>Internetbedrijven (educatief)</td>
+      <td>kwaliteitsinfo-onderwijs (gratis), onderwijsco...</td>
+      <td>Ja</td>
+      <td>Online-bedrijven educatief</td>
       <td>company_promotion</td>
+      <td>doelgroep VO/12+, informatie_primair_doel, ond...</td>
       <td>10</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>div. commercieel informatieproducten, kwalitei...</td>
-      <td>doelgroep VO/12+, informatie_primair_doel, ond...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 4, 2023 3:23 PM</td>
       <td>Maarten Sprenger</td>
@@ -6982,15 +7832,15 @@ doelgroep_vo
     <tr>
       <th>schooltv.nl</th>
       <td>https://schooltv.nl/</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo voor 8-18, publiek_mediaplatfor...</td>
+      <td>Ja</td>
       <td>Publieke_omroep</td>
       <td>none</td>
+      <td>doelgroep PO/8-12, doelgroep VO/12+, edutainme...</td>
       <td>12</td>
       <td>not_for_profit</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren, publ...</td>
-      <td>doelgroep PO/8-12, doelgroep VO/12+, edutainme...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 6, 2023 10:21 AM</td>
       <td>Maarten Sprenger</td>
@@ -7006,15 +7856,15 @@ doelgroep_vo
     <tr>
       <th>seksualiteit.nl</th>
       <td>https://seksualiteit.nl</td>
-      <td>lichaam</td>
+      <td>informatie in het kader van goed doel, kennisb...</td>
+      <td>Ja</td>
       <td>Onafhankelijk Kennis- en adviescentrum</td>
       <td>none</td>
+      <td>doelgroep VO/12+, kennisbank/centrum, vakinfor...</td>
       <td>1</td>
       <td>not_for_profit</td>
+      <td>lichaam</td>
       <td>NaN</td>
-      <td>informatie in het kader van goed doel, kennisb...</td>
-      <td>doelgroep VO/12+, kennisbank/centrum, vakinfor...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 7, 2024 4:44 PM</td>
       <td>Maarten Sprenger</td>
@@ -7030,15 +7880,15 @@ doelgroep_vo
     <tr>
       <th>sense.info</th>
       <td>https://sense.info</td>
-      <td>lichaam</td>
+      <td>kwaliteitsinfo voor 8-18</td>
+      <td>Ja</td>
       <td>Overheid (of i.o.v.)</td>
       <td>none</td>
+      <td>doelgroep VO/12+, samenwerkingsproject, voorli...</td>
       <td>5</td>
       <td>not_for_profit</td>
+      <td>lichaam</td>
       <td>NaN</td>
-      <td>kwaliteitscontent voor kinderen/jongeren</td>
-      <td>doelgroep VO/12+, samenwerkingsproject, voorli...</td>
-      <td>Ja</td>
       <td>...</td>
       <td>January 7, 2024 4:49 PM</td>
       <td>Maarten Sprenger</td>
@@ -7054,15 +7904,15 @@ doelgroep_vo
     <tr>
       <th>surinamewebquest.nl</th>
       <td>http://www.surinamewebquest.nl/</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo-onderwijs (gratis)</td>
+      <td>Ja</td>
       <td>Leraren/Docenten</td>
       <td>none</td>
+      <td>doelgroep VO/12+, informatie_primair_doel</td>
       <td>0</td>
       <td>not_for_profit</td>
       <td>NaN</td>
-      <td>persoonlijke onderwijscontent</td>
-      <td>doelgroep VO/12+, informatie_primair_doel</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>December 15, 2023 10:38 AM</td>
       <td>Maarten Sprenger</td>
@@ -7078,15 +7928,15 @@ doelgroep_vo
     <tr>
       <th>wetenschapsschool.nl</th>
       <td>https://www.wetenschapsschool.nl/</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo-onderwijs (gratis), onderwijsco...</td>
+      <td>Ja</td>
       <td>Leraren/Docenten</td>
       <td>none</td>
+      <td>about-voorbeeld, doelgroep VO/12+, informatie_...</td>
       <td>11</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>about-voorbeeld, doelgroep VO/12+, onderwijsco...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>November 4, 2023 3:22 PM</td>
       <td>Maarten Sprenger</td>
@@ -7102,15 +7952,15 @@ doelgroep_vo
     <tr>
       <th>youtube.com/@WouterRenkema</th>
       <td>https://www.youtube.com/@WouterRenkema</td>
-      <td>NaN</td>
+      <td>kwaliteitsinfo-onderwijs (gratis)</td>
+      <td>Ja</td>
       <td>Leraren/Docenten</td>
       <td>many_ads</td>
+      <td>BigTech, doelgroep VO/12+, infinite_scroll, in...</td>
       <td>23</td>
       <td>commercieel</td>
       <td>NaN</td>
-      <td>kwaliteitsonderwijscontent</td>
-      <td>BigTech, doelgroep VO/12+, infinite_scroll, in...</td>
-      <td>Ja</td>
+      <td>NaN</td>
       <td>...</td>
       <td>February 26, 2024 2:52 PM</td>
       <td>Maarten Sprenger</td>
@@ -7143,13 +7993,13 @@ venn2(
 
 
 
-    <matplotlib_venn._common.VennDiagram at 0x329f76490>
+    <matplotlib_venn._common.VennDiagram at 0x32084e510>
 
 
 
 
     
-![png](analysis_files/analysis_122_1.png)
+![png](analysis_files/analysis_124_1.png)
     
 
 
@@ -7170,13 +8020,13 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '11'), Text(0, 0, '5')]
+    [Text(0, 0, '11'), Text(0, 0, '4'), Text(0, 0, '1')]
 
 
 
 
     
-![png](analysis_files/analysis_123_1.png)
+![png](analysis_files/analysis_125_1.png)
     
 
 
@@ -7203,7 +8053,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_124_1.png)
+![png](analysis_files/analysis_126_1.png)
     
 
 
@@ -7280,7 +8130,7 @@ ax.bar_label(ax.containers[0], labels=bar_labels)
 
 
     
-![png](analysis_files/analysis_127_1.png)
+![png](analysis_files/analysis_129_1.png)
     
 
 
@@ -7309,22 +8159,22 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '35'),
-     Text(0, 0, '20'),
-     Text(0, 0, '15'),
-     Text(0, 0, '9'),
-     Text(0, 0, '2'),
-     Text(0, 0, '8'),
-     Text(0, 0, '6'),
-     Text(0, 0, '4'),
+    [Text(0, 0, '87'),
      Text(0, 0, '0'),
-     Text(0, 0, '1')]
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '1'),
+     Text(0, 0, '12')]
 
 
 
 
     
-![png](analysis_files/analysis_130_1.png)
+![png](analysis_files/analysis_132_1.png)
     
 
 
@@ -7349,10 +8199,10 @@ ax.bar_label(ax.containers[0])
 
 
 
-    [Text(0, 0, '83'),
-     Text(0, 0, '12'),
-     Text(0, 0, '2'),
-     Text(0, 0, '2'),
+    [Text(0, 0, '65'),
+     Text(0, 0, '26'),
+     Text(0, 0, '5'),
+     Text(0, 0, '3'),
      Text(0, 0, '0'),
      Text(0, 0, '0'),
      Text(0, 0, '0'),
@@ -7364,7 +8214,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_131_1.png)
+![png](analysis_files/analysis_133_1.png)
     
 
 
@@ -7404,7 +8254,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_132_1.png)
+![png](analysis_files/analysis_134_1.png)
     
 
 
@@ -7438,7 +8288,7 @@ ax = (
 ax.bar_label(ax.containers[0])
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/2519624949.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/2519624949.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
       .apply(
 
 
@@ -7446,21 +8296,21 @@ ax.bar_label(ax.containers[0])
 
 
     [Text(0, 0, '3'),
-     Text(0, 0, '3'),
-     Text(0, 0, '6'),
+     Text(0, 0, '5'),
+     Text(0, 0, '5'),
+     Text(0, 0, '5'),
      Text(0, 0, '4'),
-     Text(0, 0, '6'),
-     Text(0, 0, '2'),
-     Text(0, 0, '9'),
-     Text(0, 0, '12'),
-     Text(0, 0, '22'),
-     Text(0, 0, '25')]
+     Text(0, 0, '3'),
+     Text(0, 0, '10'),
+     Text(0, 0, '11'),
+     Text(0, 0, '25'),
+     Text(0, 0, '21')]
 
 
 
 
     
-![png](analysis_files/analysis_134_2.png)
+![png](analysis_files/analysis_136_2.png)
     
 
 
@@ -7492,7 +8342,7 @@ ax = (
 ax.bar_label(ax.containers[0])
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/1416800553.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/1416800553.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
       .apply(
 
 
@@ -7503,18 +8353,18 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '7'),
      Text(0, 0, '3'),
      Text(0, 0, '3'),
+     Text(0, 0, '0'),
      Text(0, 0, '1'),
+     Text(0, 0, '2'),
      Text(0, 0, '1'),
-     Text(0, 0, '1'),
-     Text(0, 0, '4'),
-     Text(0, 0, '4'),
-     Text(0, 0, '1')]
+     Text(0, 0, '3'),
+     Text(0, 0, '5')]
 
 
 
 
     
-![png](analysis_files/analysis_135_2.png)
+![png](analysis_files/analysis_137_2.png)
     
 
 
@@ -7546,19 +8396,19 @@ ax = (
 ax.bar_label(ax.containers[0])
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/3201790118.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/3201790118.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
       .apply(
 
 
 
 
 
-    [Text(0, 0, '29'),
-     Text(0, 0, '15'),
-     Text(0, 0, '6'),
-     Text(0, 0, '4'),
-     Text(0, 0, '6'),
-     Text(0, 0, '1'),
+    [Text(0, 0, '28'),
+     Text(0, 0, '18'),
+     Text(0, 0, '8'),
+     Text(0, 0, '5'),
+     Text(0, 0, '5'),
+     Text(0, 0, '2'),
      Text(0, 0, '0'),
      Text(0, 0, '2'),
      Text(0, 0, '0'),
@@ -7568,7 +8418,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_136_2.png)
+![png](analysis_files/analysis_138_2.png)
     
 
 
@@ -7577,7 +8427,7 @@ ax.bar_label(ax.containers[0])
 
 ```python
 column = "Toegankelijkheid doelgroep (indruk)"
-value = "redelijk begrijpelijk"
+value = "redelijk_begrijpelijk"
 
 ax = (
     results.groupby("Query")
@@ -7602,7 +8452,7 @@ ax = (
 ax.bar_label(ax.containers[0])
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/3233662226.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/3774244460.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
       .apply(
 
 
@@ -7613,7 +8463,7 @@ ax.bar_label(ax.containers[0])
      Text(0, 0, '9'),
      Text(0, 0, '16'),
      Text(0, 0, '7'),
-     Text(0, 0, '12'),
+     Text(0, 0, '11'),
      Text(0, 0, '10'),
      Text(0, 0, '9'),
      Text(0, 0, '3'),
@@ -7624,7 +8474,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_138_2.png)
+![png](analysis_files/analysis_140_2.png)
     
 
 
@@ -7656,29 +8506,29 @@ ax = (
 ax.bar_label(ax.containers[0])
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_76520/1130612084.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_52598/1130612084.py:6: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
       .apply(
 
 
 
 
 
-    [Text(0, 0, '14'),
+    [Text(0, 0, '13'),
      Text(0, 0, '15'),
      Text(0, 0, '12'),
      Text(0, 0, '11'),
      Text(0, 0, '12'),
      Text(0, 0, '5'),
      Text(0, 0, '4'),
-     Text(0, 0, '4'),
-     Text(0, 0, '2'),
+     Text(0, 0, '5'),
+     Text(0, 0, '1'),
      Text(0, 0, '1')]
 
 
 
 
     
-![png](analysis_files/analysis_139_2.png)
+![png](analysis_files/analysis_141_2.png)
     
 
 
@@ -7707,7 +8557,7 @@ ax.set_ylabel("Number of Queries")
 
 
     
-![png](analysis_files/analysis_141_1.png)
+![png](analysis_files/analysis_143_1.png)
     
 
 
@@ -7747,7 +8597,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_143_1.png)
+![png](analysis_files/analysis_145_1.png)
     
 
 
@@ -7781,7 +8631,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_145_1.png)
+![png](analysis_files/analysis_147_1.png)
     
 
 
@@ -7809,7 +8659,6 @@ ax.bar_label(ax.containers[0])
     [Text(0, 0, '6'),
      Text(0, 0, '8'),
      Text(0, 0, '16'),
-     Text(0, 0, '18'),
      Text(0, 0, '24'),
      Text(0, 0, '36')]
 
@@ -7817,7 +8666,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_146_1.png)
+![png](analysis_files/analysis_148_1.png)
     
 
 
@@ -7882,7 +8731,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_148_1.png)
+![png](analysis_files/analysis_150_1.png)
     
 
 
@@ -7923,7 +8772,7 @@ ax.bar_label(ax.containers[0])
     Requirement already satisfied: pyzmq>=23.0 in /Users/carstenschnober/SlimZoeken/100queries/.venv/lib/python3.11/site-packages (from jupyter-client>=6.1.12->nbclient>=0.5.0->nbconvert) (25.1.2)
     Requirement already satisfied: tornado>=6.2 in /Users/carstenschnober/SlimZoeken/100queries/.venv/lib/python3.11/site-packages (from jupyter-client>=6.1.12->nbclient>=0.5.0->nbconvert) (6.4)
     
-    [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m23.3.2[0m[39;49m -> [0m[32;49m24.0[0m
+    [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m23.3.2[0m[39;49m -> [0m[32;49m24.1.2[0m
     [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip install --upgrade pip[0m
     Note: you may need to restart the kernel to use updated packages.
 
@@ -7933,7 +8782,8 @@ ax.bar_label(ax.containers[0])
 !jupyter nbconvert --to markdown analysis.ipynb
 ```
 
+    zsh:1: /Users/carstenschnober/.local/bin/jupyter: bad interpreter: /Users/carstenschnober/opt/anaconda3/envs/SoS/bin/python: no such file or directory
     [NbConvertApp] Converting notebook analysis.ipynb to markdown
     [NbConvertApp] Support files will be in analysis_files/
-    [NbConvertApp] Writing 185261 bytes to analysis.md
+    [NbConvertApp] Writing 218776 bytes to analysis.md
 
