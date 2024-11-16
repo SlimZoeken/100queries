@@ -30,6 +30,11 @@ Software engineer and Natural Language Processing (NLP) researcher with a critic
 
 [linkedin.com/in/carsten-s-a1aba0,](https://www.linkedin.com/in/carsten-s-a1aba020/) [esciencecenter.nl/team/carsten-schnober/](https://www.esciencecenter.nl/team/carsten-schnober/)
 
+## The Study
+
+We provide a comprehensive description of the methodology on our [Notion page](https://slimzoeken.notion.site/Onderzoeksverslag-100-Queries-e24772ddefb4467ba7d0f167171875cf) in Dutch.
+Find an overview in English below.
+
 ## Design
 
 For this study, we selected one hundred queries from a list of two hundred random, authentic searches by primary school pupils.
