@@ -22,7 +22,7 @@
     Requirement already satisfied: scipy in /Users/carstenschnober/SlimZoeken/100queries/.venv/lib/python3.11/site-packages (from matplotlib-venn) (1.13.0)
     Requirement already satisfied: six>=1.5 in /Users/carstenschnober/SlimZoeken/100queries/.venv/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)
     
-    [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m23.3.2[0m[39;49m -> [0m[32;49m24.2[0m
+    [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m23.3.2[0m[39;49m -> [0m[32;49m24.3.1[0m
     [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip install --upgrade pip[0m
     Note: you may need to restart the kernel to use updated packages.
 
@@ -32,7 +32,7 @@
 import pandas as pd
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_37838/4080736814.py:1: DeprecationWarning: 
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_9121/4080736814.py:1: DeprecationWarning: 
     Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
     (to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
     but was not found to be installed on your system.
@@ -1904,7 +1904,7 @@ query
 
 
 
-    'wat betekent schotse'
+    'Uitvindingen\xa0\xa0\xa0\xa0\xa0\xa0 naam'
 
 
 
@@ -1959,241 +1959,241 @@ results.loc[results["Query"].str.startswith(query)].sort_values(by="Ranking")
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Just-in-case</td>
-      <td>Schotse - 2 definities - Encyclo</td>
-      <td>https://www.encyclo.nl/begrip/schotse#:~:text=...</td>
-      <td>wat betekent schotse</td>
+      <th>133</th>
+      <td>Ja</td>
+      <td>Lijst van uitvinders - Wikipedia</td>
+      <td>https://nl.wikipedia.org/wiki/Lijst_van_uitvin...</td>
+      <td>Uitvindingen       naam</td>
       <td>relevant</td>
       <td>NaN</td>
-      <td>encyclo.nl</td>
-      <td>Slot Webcommerce bv.</td>
+      <td>wikipedia.org</td>
+      <td>Wikimedia Foundation inc</td>
       <td>complex</td>
-      <td>informatief</td>
+      <td>navigational</td>
       <td>...</td>
-      <td>aggregator/contentfarm,informatieproduct div. ...</td>
-      <td>7</td>
+      <td>gebruikersplatform met kwaliteitsinformatie</td>
       <td>1</td>
       <td>1</td>
-      <td>NaN</td>
-      <td>www.encyclo.nl</td>
-      <td>-</td>
-      <td>Maarten Sprenger</td>
-      <td>Needs peer-review</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>Just-in-case</td>
-      <td>Schots - 7 definities - Encyclo</td>
-      <td>https://www.encyclo.nl/begrip/schots</td>
-      <td>wat betekent schotse</td>
-      <td>niet_relevant</td>
-      <td>NaN</td>
-      <td>encyclo.nl</td>
-      <td>Slot Webcommerce bv.</td>
-      <td>complex</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>aggregator/contentfarm,informatieproduct div. ...</td>
-      <td>7</td>
       <td>1</td>
-      <td>2</td>
       <td>NaN</td>
-      <td>www.encyclo.nl</td>
-      <td>-</td>
-      <td>Maarten Sprenger</td>
-      <td>Needs peer-review</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Nee</td>
-      <td>Gratis woordenboek | Van Dale NEDERLAND</td>
-      <td>https://www.vandale.nl/gratis-woordenboek/nede...</td>
-      <td>wat betekent schotse</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>vandale.nl</td>
-      <td>Van Dale Uitgevers, Utrecht/Antwerpen</td>
-      <td>complex</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>informatieproduct div. commercieel</td>
-      <td>4</td>
-      <td>1</td>
-      <td>3</td>
-      <td>NaN</td>
-      <td>https://www.vandale.nl/</td>
-      <td>-</td>
+      <td>https://nl.wikipedia.org/</td>
+      <td>1, 5, 6</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>Just-in-case</td>
-      <td>schots Nederlands woordenboek - Woorden.org</td>
-      <td>https://www.woorden.org/woord/schots</td>
-      <td>wat betekent schotse</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>woorden.org</td>
-      <td>Slot Webcommerce BV, K Dictionaries Ltd.</td>
-      <td>eenvoudig</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>informatieproduct div. commercieel</td>
-      <td>4</td>
-      <td>1</td>
-      <td>4</td>
-      <td>NaN</td>
-      <td>https://www.woorden.org</td>
-      <td>-</td>
-      <td>Maarten Sprenger</td>
-      <td>Almost completed</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Just-in-case</td>
-      <td>Schotse Nederlands woordenboek - Woorden.org</td>
-      <td>https://www.woorden.org/woord/Schotse</td>
-      <td>wat betekent schotse</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>woorden.org</td>
-      <td>Slot Webcommerce BV, K Dictionaries Ltd.</td>
-      <td>eenvoudig</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>informatieproduct div. commercieel</td>
-      <td>4</td>
-      <td>1</td>
-      <td>5</td>
-      <td>NaN</td>
-      <td>https://www.woorden.org</td>
-      <td>-</td>
-      <td>Maarten Sprenger</td>
-      <td>Almost completed</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Just-in-case</td>
-      <td>Schots - WikiWoordenboek</td>
-      <td>https://nl.wiktionary.org/wiki/Schots</td>
-      <td>wat betekent schotse</td>
-      <td>relevant</td>
-      <td>NaN</td>
-      <td>wiktionary.org</td>
-      <td>Wiktionary, Wikimedia foundation</td>
-      <td>complex</td>
-      <td>informatief</td>
-      <td>...</td>
-      <td>gebruikersplatform met kwaliteitsinformatie</td>
-      <td>0</td>
-      <td>1</td>
-      <td>6</td>
-      <td>NaN</td>
-      <td>https://nl.wiktionary.org/</td>
-      <td>-</td>
-      <td>Maarten Sprenger</td>
-      <td>Almost completed</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
+      <th>134</th>
       <td>Ja</td>
-      <td>Wat is de betekenis van Schotse</td>
-      <td>https://www.ensie.nl/betekenis/schotse</td>
-      <td>wat betekent schotse</td>
+      <td>Lijst van uitvindingen | Historiek</td>
+      <td>https://historiek.net/lijst-van-uitvindingen/</td>
+      <td>Uitvindingen       naam</td>
       <td>relevant</td>
       <td>NaN</td>
-      <td>Ensie.nl</td>
-      <td>Stichting Ensie Encyclopedie</td>
+      <td>historiek.net</td>
+      <td>Historiek vof</td>
       <td>redelijk_begrijpelijk</td>
       <td>informatief</td>
       <td>...</td>
-      <td>kwaliteitsinformatie-div</td>
-      <td>1</td>
-      <td>1</td>
+      <td>informatieproduct div. commercieel</td>
       <td>7</td>
+      <td>1</td>
+      <td>2</td>
       <td>NaN</td>
-      <td>https://www.ensie.nl/</td>
-      <td>-</td>
+      <td>https://historiek.net/</td>
+      <td>1, 5, 6</td>
+      <td>Maarten Sprenger</td>
+      <td>Needs peer-review</td>
+      <td>geschiedenis</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>Just-in-case</td>
+      <td>Blog | Je naam voor altijd verbonden met je ui...</td>
+      <td>https://www.epc.nl/blog/eerbetoon-aan-uitvinde...</td>
+      <td>Uitvindingen       naam</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>epc.nl</td>
+      <td>EP&amp;C Patent Attorneys</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>product-/bedrijfsinfo + uithangbord</td>
+      <td>11</td>
+      <td>1</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>https://www.epc.nl/</td>
+      <td>1, 5, 6</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Ja</td>
+      <td>11 Wereldberoemde Nederlandse Uitvindingen - D...</td>
+      <td>https://www.bnnvara.nl/dewerelddraaitdoor/arti...</td>
+      <td>Uitvindingen       naam</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>bnnvara.nl</td>
+      <td>BNN/VARA</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>publiek_mediaplatform (incl journalistiek)</td>
+      <td>5</td>
+      <td>1</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>https://www.bnnvara.nl</td>
+      <td>1, 5, 6</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>Ja</td>
+      <td>UITVINDINGEN</td>
+      <td>https://www.rd.nl/oud/series/uitvindingen/uitv...</td>
+      <td>Uitvindingen       naam</td>
+      <td>relevant</td>
+      <td>outdated</td>
+      <td>rd.nl</td>
+      <td>Erdee media groep EMG</td>
+      <td>complex</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>journalistiek informatieproduct (betaald)</td>
+      <td>26</td>
+      <td>1</td>
+      <td>5</td>
+      <td>NaN</td>
+      <td>https://www.rd.nl/</td>
+      <td>1, 5, 6</td>
       <td>Maarten Sprenger</td>
       <td>Almost completed</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>138</th>
       <td>Ja</td>
-      <td>Schotland - Wikipedia</td>
-      <td>https://nl.wikipedia.org/wiki/Schotland</td>
-      <td>wat betekent schotse</td>
+      <td>10 uitvindingen die het huishouden veranderden...</td>
+      <td>https://historianet.nl/techniek/uitvindingen/1...</td>
+      <td>Uitvindingen       naam</td>
       <td>relevant</td>
       <td>NaN</td>
-      <td>wikipedia.org</td>
-      <td>Wikimedia Foundation inc</td>
+      <td>historianet.nl</td>
+      <td>Bonnier Publications International AS (Noorweg...</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>informatief</td>
+      <td>...</td>
+      <td>informatieproduct div. commercieel</td>
+      <td>8</td>
+      <td>1</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>https://historianet.nl</td>
+      <td>1, 5, 6</td>
+      <td>Maarten Sprenger</td>
+      <td>Needs peer-review</td>
+      <td>geschiedenis</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Just-in-case</td>
+      <td>Ma, Dersu, Kweklos…: 17 uitvinders uit de preh...</td>
+      <td>https://scientias.nl/ma-dersu-kweklos-17-uitvi...</td>
+      <td>Uitvindingen       naam</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>scientias.nl</td>
+      <td>Scientias.nl B.V</td>
       <td>complex</td>
       <td>informatief</td>
       <td>...</td>
-      <td>gebruikersplatform met kwaliteitsinformatie</td>
+      <td>informatieproduct div. commercieel</td>
+      <td>80</td>
       <td>1</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>https://scientias.nl/</td>
+      <td>1, 5, 6</td>
+      <td>Maarten Sprenger</td>
+      <td>Done</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>Ja</td>
+      <td>Uitvindingen | Hoe zijn dingen gemaakt? | hist...</td>
+      <td>https://historianet.nl/techniek/uitvindingen</td>
+      <td>Uitvindingen       naam</td>
+      <td>relevant</td>
+      <td>NaN</td>
+      <td>historianet.nl</td>
+      <td>Bonnier Publications International AS (Noorweg...</td>
+      <td>redelijk_begrijpelijk</td>
+      <td>navigational</td>
+      <td>...</td>
+      <td>informatieproduct div. commercieel</td>
+      <td>8</td>
       <td>1</td>
       <td>8</td>
       <td>NaN</td>
-      <td>https://nl.wikipedia.org/</td>
-      <td>-</td>
+      <td>https://historianet.nl</td>
+      <td>1, 5, 6</td>
       <td>Maarten Sprenger</td>
-      <td>Done</td>
-      <td>NaN</td>
+      <td>Needs peer-review</td>
+      <td>geschiedenis</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>Ja</td>
-      <td>Schots (taal) - Wikipedia</td>
-      <td>https://nl.wikipedia.org/wiki/Schots_(taal)</td>
-      <td>wat betekent schotse</td>
+      <th>141</th>
+      <td>Nee</td>
+      <td>Tijdperk van uitvindingen 1870-1914</td>
+      <td>https://www.historamarond1900.nl/uitvindingen</td>
+      <td>Uitvindingen       naam</td>
       <td>relevant</td>
-      <td>NaN</td>
-      <td>wikipedia.org</td>
-      <td>Wikimedia Foundation inc</td>
+      <td>outdated</td>
+      <td>historamarond1900.nl</td>
+      <td>Anne-Claire Verham, auteur [en ook Varenna Inf...</td>
       <td>complex</td>
       <td>informatief</td>
       <td>...</td>
-      <td>gebruikersplatform met kwaliteitsinformatie</td>
-      <td>1</td>
+      <td>informatieproduct onderwijs/div. non-comm.</td>
+      <td>2</td>
       <td>1</td>
       <td>9</td>
       <td>NaN</td>
-      <td>https://nl.wikipedia.org/</td>
-      <td>-</td>
+      <td>https://www.historamarond1900.nl/</td>
+      <td>1, 5, 6</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
-      <td>NaN</td>
+      <td>geschiedenis</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>Just-in-case</td>
-      <td>10 Schots-Gaelische plaatsnamen en hun beteken...</td>
-      <td>https://www.visitscotland.com/nl-nl/inspiratio...</td>
-      <td>wat betekent schotse</td>
-      <td>misschien</td>
+      <th>142</th>
+      <td>Ja</td>
+      <td>De wereldberoemde uitvindingen van een kikkerl...</td>
+      <td>https://journalistiekennieuwemedia.nl/jnm/2020...</td>
+      <td>Uitvindingen       naam</td>
+      <td>relevant</td>
       <td>NaN</td>
-      <td>visitscotland.com</td>
-      <td>VisitScotland is de nationale toeristenbond va...</td>
+      <td>journalistiekennieuwemedia.nl</td>
+      <td>opleiding Journalistiek en Nieuwe Media van de...</td>
       <td>complex</td>
       <td>informatief</td>
       <td>...</td>
-      <td>overheidsinformatie (overige),promotionele sites</td>
-      <td>2</td>
+      <td>wetenschaps-informatie</td>
+      <td>1</td>
       <td>1</td>
       <td>10</td>
       <td>NaN</td>
-      <td>https://www.visitscotland.com/nl-nl</td>
-      <td>-</td>
+      <td>https://journalistiekennieuwemedia.nl/jnm/</td>
+      <td>1, 5, 6</td>
       <td>Maarten Sprenger</td>
       <td>Done</td>
       <td>NaN</td>
@@ -5156,7 +5156,7 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 ).grid(axis="y")
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_37838/1192633478.py:17: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_9121/1192633478.py:17: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
       pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 
 
@@ -5526,7 +5526,7 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 ).grid(axis="y")
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_37838/978984602.py:19: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_9121/978984602.py:19: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
       pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 
 
@@ -6006,7 +6006,7 @@ pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 ).grid(axis="y")
 ```
 
-    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_37838/331480954.py:18: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+    /var/folders/d8/j5_fyf8941j_492zvf8948y40000gn/T/ipykernel_9121/331480954.py:18: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
       pd.DataFrame.from_dict(value_counts, orient="index").fillna(
 
 
@@ -6349,6 +6349,46 @@ sources["uBlocked trackers"].plot(
     
 
 
+
+```python
+ax = (sources["uBlocked trackers"].value_counts(normalize=True) * 100).plot(
+    kind="hist",
+    xlabel="Number of Blocked Trackers",
+    ylabel="Sources (%)",
+    title=f"Number of Blocked Trackers per Source (Percentage out of {len(sources)})",
+    xticks=range(1, 16),
+    bins=15,
+)
+ax.bar_label(ax.containers[0])
+```
+
+
+
+
+    [Text(0, 0, '17'),
+     Text(0, 0, '2'),
+     Text(0, 0, '6'),
+     Text(0, 0, '2'),
+     Text(0, 0, '1'),
+     Text(0, 0, '1'),
+     Text(0, 0, '1'),
+     Text(0, 0, '1'),
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '0'),
+     Text(0, 0, '1'),
+     Text(0, 0, '1'),
+     Text(0, 0, '0'),
+     Text(0, 0, '1')]
+
+
+
+
+    
+![png](analysis_files/analysis_118_1.png)
+    
+
+
 ### Ads
 
 
@@ -6386,7 +6426,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_119_1.png)
+![png](analysis_files/analysis_120_1.png)
     
 
 
@@ -6404,7 +6444,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_120_1.png)
+![png](analysis_files/analysis_121_1.png)
     
 
 
@@ -6476,7 +6516,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_123_1.png)
+![png](analysis_files/analysis_124_1.png)
     
 
 
@@ -6506,7 +6546,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_125_1.png)
+![png](analysis_files/analysis_126_1.png)
     
 
 
@@ -6542,7 +6582,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_127_1.png)
+![png](analysis_files/analysis_128_1.png)
     
 
 
@@ -7529,7 +7569,7 @@ venn2(
 
 
     
-![png](analysis_files/analysis_131_1.png)
+![png](analysis_files/analysis_132_1.png)
     
 
 
@@ -7556,7 +7596,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_132_1.png)
+![png](analysis_files/analysis_133_1.png)
     
 
 
@@ -7583,7 +7623,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_133_1.png)
+![png](analysis_files/analysis_134_1.png)
     
 
 
@@ -7660,7 +7700,7 @@ ax.bar_label(ax.containers[0], labels=bar_labels)
 
 
     
-![png](analysis_files/analysis_136_1.png)
+![png](analysis_files/analysis_137_1.png)
     
 
 
@@ -7704,7 +7744,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_139_1.png)
+![png](analysis_files/analysis_140_1.png)
     
 
 
@@ -7744,7 +7784,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_140_1.png)
+![png](analysis_files/analysis_141_1.png)
     
 
 
@@ -7784,7 +7824,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_141_1.png)
+![png](analysis_files/analysis_142_1.png)
     
 
 
@@ -8220,7 +8260,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_145_2.png)
+![png](analysis_files/analysis_146_2.png)
     
 
 
@@ -8274,7 +8314,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_146_2.png)
+![png](analysis_files/analysis_147_2.png)
     
 
 
@@ -8328,7 +8368,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_147_2.png)
+![png](analysis_files/analysis_148_2.png)
     
 
 
@@ -8384,7 +8424,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_149_2.png)
+![png](analysis_files/analysis_150_2.png)
     
 
 
@@ -8438,7 +8478,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_150_2.png)
+![png](analysis_files/analysis_151_2.png)
     
 
 
@@ -8467,7 +8507,7 @@ ax.set_ylabel("Number of Queries")
 
 
     
-![png](analysis_files/analysis_152_1.png)
+![png](analysis_files/analysis_153_1.png)
     
 
 
@@ -8507,7 +8547,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_154_1.png)
+![png](analysis_files/analysis_155_1.png)
     
 
 
@@ -8541,7 +8581,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_156_1.png)
+![png](analysis_files/analysis_157_1.png)
     
 
 
@@ -8576,7 +8616,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_157_1.png)
+![png](analysis_files/analysis_158_1.png)
     
 
 
@@ -8641,7 +8681,7 @@ ax.bar_label(ax.containers[0])
 
 
     
-![png](analysis_files/analysis_159_1.png)
+![png](analysis_files/analysis_160_1.png)
     
 
 
@@ -8695,5 +8735,6 @@ ax.bar_label(ax.containers[0])
     zsh:1: /Users/carstenschnober/.local/bin/jupyter: bad interpreter: /Users/carstenschnober/opt/anaconda3/envs/SoS/bin/python: no such file or directory
     [NbConvertApp] Converting notebook analysis.ipynb to markdown
     [NbConvertApp] Support files will be in analysis_files/
-    [NbConvertApp] Writing 215064 bytes to analysis.md
+    [NbConvertApp] Making directory analysis_files
+    [NbConvertApp] Writing 215013 bytes to analysis.md
 
