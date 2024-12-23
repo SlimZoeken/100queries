@@ -59,4 +59,4 @@ The selection of queries was made as follows:
 
 - This [notebook](https://github.com/SlimZoeken/100queries/blob/main/notebooks/analysis.ipynb) shows the raw data analyses.
 - Presentation of *100 Queries* at the i&i spring conference: <https://ieni.github.io/april2024/honderd-queries>
-- Presentation at the [HNS Conference 2024](https://hsnbundels.taalunie.org/bijdrage/zoeken-onderzocht-het-100-queries-project/) about teaching Dutch.
+- Presentation at the [HSN Conference 2024](https://hsnbundels.taalunie.org/bijdrage/zoeken-onderzocht-het-100-queries-project/).
