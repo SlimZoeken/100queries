@@ -23,7 +23,7 @@ From 2019 to the present, Maarten advised at various times in the context of the
 
 ### Carsten Schnober
 
-Carsten os a software engineer with a background in Natural Language Processing (NLP) and Machine Learning.
+Carsten is a software engineer with a background in Natural Language Processing (NLP) and Machine Learning.
 Apart from being an experienced engineer, he is interested in the mutual impact of technology and society.
 Carsten works for the NL eScience Center, where he develops advanced technological research software for researchers in the Humanties and Social Sciences.
 Software engineer and Natural Language Processing (NLP) researcher with a critical view on society and technology.
