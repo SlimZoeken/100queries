@@ -17,7 +17,7 @@ The underlying idea is that in terms of observation (expert opinion) an estimate
 
 Maarten Sprenger is an information professional, educational editor and author of two *Slim Zoeken* books for 8-14 year olds. He is currently working on [Slim3](https://www.slimzoeken.nu/slim3uitleg), understandable information about web search for school, study or work. Two versions are available, one for primary education and one for all others. 
 
-From 2019 to the present, Maarten advised at various times in the context of the *Actualisatie van de nieuwe Kerndoelen* ("Actualization of the new Core Education Objectives"), for the subjects Dutch and for Digital Literacy.
+From 2019 to the present, Maarten advised at various times in the context of the *Actualisatie van de nieuwe Kerndoelen* ("Actualization of the new national Core Education Objectives"), for the subjects Dutch and for Digital Literacy.
 
 [slimzoeken.nu,](https://www.slimzoeken.nu/) [linkedin.com/in/msprenger](https://www.linkedin.com/in/msprenger/?locale=nl_NL)
 
