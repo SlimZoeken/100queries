@@ -15,7 +15,7 @@ The underlying idea is that in terms of observation (expert opinion) an estimate
 
 ### Maarten Sprenger
 
-Maarten Sprenger is an information professional, educational editor and author of two *Slim Zoeken* books for 8-14 year olds. He is currently working on [Slim3](https://www.slimzoeken.nu/slim3uitleg), understandable information about web search for school, study or work. Two versions are available, one for primary education and one for all others. 
+Maarten Sprenger is an information professional, educational editor and author of two *Slim Zoeken* books for 8-14 year olds. He is currently working on [Slim3](https://www.slimzoeken.nu/slim3uitleg), understandable information about web search for school, study or work. Two versions are available, one for primary education and one for all others.
 
 From 2019 to the present, Maarten advised at various times in the context of the *Actualisatie van de nieuwe Kerndoelen* ("Actualization of the new national Core Education Objectives"), for the subjects Dutch and for Digital Literacy.
 
@@ -23,12 +23,9 @@ From 2019 to the present, Maarten advised at various times in the context of the
 
 ### Carsten Schnober
 
-Carsten is a software engineer with a background in Natural Language Processing (NLP) and Machine Learning.
-Apart from being an experienced engineer, he is interested in the mutual impact of technology and society.
-Carsten works for the NL eScience Center, where he develops advanced technological research software for researchers in the Humanties and Social Sciences.
-Software engineer and Natural Language Processing (NLP) researcher with a critical view on society and technology.
+[Carsten](https://carschno.github.io/) is a software engineer and researcher in Natural Language Processing (NLP), Information Retrieval, Machine Learning.
 
-[linkedin.com/in/carsten-s-a1aba0,](https://www.linkedin.com/in/carsten-s-a1aba020/) [esciencecenter.nl/team/carsten-schnober/](https://www.esciencecenter.nl/team/carsten-schnober/)
+Carsten works for the NL eScience Center, where he develops advanced technological research software for researchers in the Humanities and Social Sciences.
 
 ## The Study
 
@@ -52,8 +49,9 @@ The selection of queries was made as follows:
 - Dutch language
 - Primary school age (8-12 years)
 - Period 1 year (2022)
-- Random samples, based on frequency (because not only the top queries are interesting)
+- Random samples
 - Delivered in a set of 200; manually reduced to a working set of 100 with a balanced distribution of topics, including dirty words and brand names. Evidently incomplete text and vague typos (haaaaaaaaao) and repetitions ('Ronaldo', 'Cristiano Ronaldo') were omitted.
+- All raw data and annotations are [available here](./data/)
 
 ## Output
 
